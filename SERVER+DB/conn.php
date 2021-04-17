@@ -1,5 +1,5 @@
 <?php
-$db_name = "safermarketdb";
+$db_name = "yourownfitnessdb";
 $mysql_username = "root";
 $mysql_password = "";
 $server_name = "localhost:3306";

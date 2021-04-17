@@ -5,11 +5,10 @@ class DB_functions{
 	function __construct(){
 	}
 	
-	public function storeUser($nome, $cognome, $email, $password, $indirizzo, $conn){
+	public function storeUser($email, $password, $nome, $cognome, $sesso, $telefono, $obiettivo, $freq_all){
 		$encrypted_password = sha1($password);
 		
-		$mysql_qry = "INSERT INTO utente VALUES('$email','$nome','$cognome','$encrypted_password','$indirizzo')";
-		
+		$mysql_qry = "INSERT INTO utente VALUES('$email', '$password', '$nome', '$cognome', '$sesso', '$telefono', '$obiettivo', '$freq_all')";
 		$result = mysqli_query($conn, $mysql_qry);
 		if($result == 1){
 			return $result;

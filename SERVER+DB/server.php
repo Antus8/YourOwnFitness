@@ -7,13 +7,17 @@ $db = new DB_functions();
 
 switch($service){
 	case "registrazione":{
-		$nome = $_POST['nome'];
-		$cognome = $_POST['cognome'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
-		$indirizzo = $_POST['indirizzo'];
+		$nome = $_POST['nome'];
+		$cognome = $_POST['cognome'];
+		$sesso = $_POST['sesso'];
+		$telefono = $_POST['telefono'];
+		$obiettivo = $_POST['obiettivo'];
+		$freq_all = $_POST['freq_all'];
 		
-		$user = $db->storeUser($nome, $cognome, $email, $password, $indirizzo,$conn);
+		
+		$user = $db->storeUser($email, $password, $nome, $cognome, $sesso, $telefono, $obiettivo, $freq_all);
 		print $user;
 		break;
 	}
