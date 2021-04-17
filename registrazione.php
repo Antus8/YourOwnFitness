@@ -26,27 +26,28 @@
   <div class="container">
     <div class="title">Registrazione</div>
     <div class="content">
-      <form action="#">
-
+      <form action="server.php" method="post"> <!-- una volta finito mettere server.php -->
+<!-- Serve per identificare il servizio da mandare in post -->
+				<input type="hidden" name="service" value="registrazione">
+<!-- -->
         <div class="user-details">
-
-          <div class="input-box">
+					<div class="input-box">
             <span class="details">Nome</span>
-            <input type="text" placeholder="Inserisci il nome" required>
+            <input name="nome" type="text" placeholder="Inserisci il nome" required>
           </div>
 
           <div class="input-box">
             <span class="details">Cognome</span>
-            <input type="text" placeholder="Inserisci il cognome" required>
+            <input name="cognome" type="text" placeholder="Inserisci il cognome" required>
           </div>
 
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Inserisci la email" required>
+            <input name="email" type="text" placeholder="Inserisci la email" required>
           </div>
           <div class="input-box">
             <span class="details">Telefono/Cellulare</span>
-            <input type="text" placeholder="Inserisci il tuo numero di telefono" required>
+            <input name="telefono" type="text" placeholder="Inserisci il tuo numero di telefono" required>
           </div>
 
           <div class="input-box">
@@ -56,17 +57,17 @@
 
           <div class="input-box">
             <span class="details">Conferma Password</span>
-            <input type="text" placeholder="Conferma la tua password" required>
+            <input name="password" type="text" placeholder="Conferma la tua password" required>
           </div>
 
           <div class="input-box">
             <span class="details">Frequenza di allenamento</span>
-            <input type="text" placeholder="N° di giorni alla settimana in cui ti alleni (1-6)" required>
+            <input name="freq_all" type="text" placeholder="N° di giorni alla settimana in cui ti alleni (1-6)" required>
           </div>
 
           <div class="input-box">
             <span class="details">Obiettivo</span>
-            <input type="text" placeholder="Definire il tuo obiettivo (es. dimagrire ecc..)" required>
+            <input name="obiettivo" type="text" placeholder="Definire il tuo obiettivo (es. dimagrire ecc..)" required>
           </div>
 
         </div>
@@ -87,7 +88,7 @@
           <label for="dot-3">
             <span class="dot three"></span>
             <span class="gender">Prefer not to say</span>
-            </label>
+          </label>
           </div>
         </div>
 
