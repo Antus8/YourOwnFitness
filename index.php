@@ -16,7 +16,14 @@
   <body>
 <!-- Testata del sito, Logo del sito -->
     <header>
-      <img src="#" alt="Il logo andrà qui"/>
+
+			<div class="Login"> <!-- Percorso per la registrazione -->
+				<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
+				Login
+			</a></div>
+
+			<img src="#" alt="Il logo andrà qui"/>
+
     </header>
 
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
@@ -96,10 +103,10 @@
 					<ul class="menu">
 						<li><a href="index.php">Home</a></li>
 						<li><a href="allenamento.php">Allenamento</a></li>
-						<li><a href="#">Calcolo IMC</a></li>
-						<li><a href="#">Diete</a></li>
-						<li><a href="#">Consulenze</a></li>
-						<li><a href="#">Contatti</a></li>
+						<li><a href="imc.php">Calcolo IMC</a></li>
+						<li><a href="diete.php">Diete</a></li>
+						<li><a href="consulenza.php">Consulenze</a></li>
+						<li><a href="contatti.php">Contatti</a></li>
 					</ul>
 
 					<div class="copyright">

@@ -13,9 +13,16 @@
 
  <body>
 <!-- Testata del sito, Logo del sito -->
-	 <header>
-		 <img src="#" alt="Il logo andrà qui"/>
-	 </header>
+<header>
+
+	<div class="Login"> <!-- Percorso per la registrazione -->
+		<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
+		Login
+	</a></div>
+
+	<img src="#" alt="Il logo andrà qui"/>
+
+</header>
 
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
 	<nav>
