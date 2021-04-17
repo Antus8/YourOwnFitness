@@ -65,32 +65,32 @@
 			<br>
 			<div class="title">Registrazione per consulenze</div>
 			<br>
-			<form action="#">
+			<form action="invioform.php" method="post">
 				<div class="user-details">
 
 					<div class="input-box">
 						<span class="details">Nome</span>
-						<input type="text" placeholder="Inserisci il tuo nome" required>
+						<input name="nome" type="text" placeholder="Inserisci il tuo nome" required>
 					</div>
 
 					<div class="input-box">
 						<span class="details">Cognome</span>
-						<input type="text" placeholder="Inserisci il tuo cognome" required>
+						<input name="cognome" type="text" placeholder="Inserisci il tuo cognome" required>
 					</div>
 
 					<div class="input-box">
 						<span class="details">Email</span>
-						<input type="text" placeholder="Inserisci la tua email" required>
+						<input name="email" type="text" placeholder="Inserisci la tua email" required>
 					</div>
 
 					<div class="input-box">
 						<span class="details">Telefono</span>
-						<input type="text" placeholder="Inserisci il tuo n° di telefono" required>
+						<input name="telefono" type="text" placeholder="Inserisci il tuo n° di telefono" required>
 					</div>
 
 					<div class="input-box">
 						<span class="details">Obiettivo</span>
-						<input type="text" placeholder="Inserisci il tuo obiettivo" required>
+						<input name="obiettivo"type="text" placeholder="Inserisci il tuo obiettivo" required>
 					</div>
 
 				</div>
@@ -126,6 +126,7 @@
 
 	</div>
 </div>
+
 <!-- Fine del Registration Form -->
 
 	<footer>

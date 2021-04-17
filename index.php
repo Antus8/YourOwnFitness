@@ -12,7 +12,7 @@
 	 <link rel="stylesheet" type="text/css" href="css/styles.css">
  </head>
 
- <!-- Corpo del sito, varie sezioni + script in PHP -->
+<!-- Corpo del sito, varie sezioni + script in PHP -->
   <body>
 <!-- Testata del sito, Logo del sito -->
     <header>
