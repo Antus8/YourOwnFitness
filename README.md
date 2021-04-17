@@ -1,2 +1,0 @@
-# YourOwnFitness
-Website for fitness
