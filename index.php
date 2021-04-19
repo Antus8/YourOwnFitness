@@ -94,7 +94,8 @@
 				</ul>
 
 				<!-- iFrame con playlist Spotify -->
-				<h1 style="text-transform: uppercase; text-align: center">Segui la nostra playlist Spotify!</h1><img width="20%" style="margin-left: 40%" src="images/spotify.png" alt="Playlist Spotify"/>
+				<h1 style="text-transform: uppercase; text-align: center">Segui la nostra playlist Spotify!</h1>
+				<a href="https://open.spotify.com/embed/playlist/56otQpiMyvEFPuCxnjUNpf" target="_blank"><img width="20%" style="margin-left: 40%" src="images/spotify.png" alt="Playlist Spotify"/><a/>
 
 				<iframe src="https://open.spotify.com/embed/playlist/56otQpiMyvEFPuCxnjUNpf" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 			</div>
