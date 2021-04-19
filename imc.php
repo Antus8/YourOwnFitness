@@ -63,13 +63,13 @@
 
 		 <!-- Menù a tendina -->
 		 <li class="dropdown">
-			 <a href="allenamento.php">Allenamento</a>
-			 <div class="dropdown-content">
-				 <a href="#">Cardio<hr></a>
-				 <a href="#">Pesi<hr></a>
-				 <a href="#">Corpo<br> libero<hr></a>
-			 </div>
-		 </li>
+ 			<a href="allenamento.php">Allenamento</a>
+ 			<div class="dropdown-content">
+ 				<a href="allenamento.php">Cardio<hr></a>
+ 				<a href="allenamento.php">Pesi<hr></a>
+ 				<a href="allenamento.php">Corpo<br> libero<hr></a>
+ 			</div>
+ 		</li>
 		 <!-- Fine menù a tendina -->
 
 		 <li><a href="imc.php">Calcolo IMC</a></li>

@@ -8,7 +8,7 @@ $obiettivo = $_POST['obiettivo'];
 
 // Dopo 4 secondi rimando all’home del sito
 $delay = "5";
-$url = "index.php"; // Successivamente andrà il link del sito su Altervista
+$url = "index.php";
 
 // La verifica della completezza dei dati è già stata effettuata nella classe consulenza.php
 
