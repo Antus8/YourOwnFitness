@@ -57,7 +57,11 @@
 
 		<!-- Qui andranno le varie diete, idea dell'iframe -->
 		<div id="Presentation">
-			<h1>Sito in costruzione</h1>
+			<h1>Scrivere qui sotto</h1>
+
+			<div>
+				<!-- Qui vanno le diete -->
+			</div>
 		</div>
 
 	<footer>

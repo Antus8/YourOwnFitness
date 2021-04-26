@@ -58,7 +58,10 @@
 
 		<!-- Qui andranno le varie schede di allenamento attraverso l'iframe. Utilizzare4 iframe anche per linkare i video tutorial di determinati esercizi su YouTube -->
 		<div id="Presentation">
-			<h1>Sito in costruzione!<h1>
+			<h1>Scrivere qui sotto<h1>
+				<div>
+					<!-- Qui vanno gli allenamenti -->
+				</div>
 				<!-- Prova a mettere un iframe con il video di Miletto -->
 			<iframe style="position: relative"width="560" height="315" src="https://www.youtube.com/embed/CjMhgsKP0t0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>

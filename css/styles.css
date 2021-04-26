@@ -32,6 +32,9 @@ header{
   justify-content: center;
 }
 
+.login .Logo{
+  display: block;
+}
 
 /*Proprietà del menù*/
 nav{
