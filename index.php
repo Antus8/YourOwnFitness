@@ -14,7 +14,7 @@ $message = "";
 if (isset($_POST['em'])){
 	$email = $_POST['em'];
 	$password = $_POST['pw'];
-	
+
 	if(!empty($email) && !empty($password)){
 		$user = $db->login($email, $password,$conn);
 		if ($user == "0"){
@@ -55,14 +55,14 @@ else{
 		if($user == 0){
 			$_SESSION['reg'] = "err";
 			header("Location: http://localhost/yourownfitness/registrazione.php");
-		} 
+		}
 		else{
 			alert("Registrazione avvenuta con successo. Benvenuto nel nostro team!");
 			$_SESSION['nome'] = $_POST['nome'];
 			$_SESSION['cognome'] = $_POST['cognome'];
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['login'] = "done";
-		} 
+		}
 	}
 }
 
@@ -113,9 +113,17 @@ function alert($msg) {
 		<li class="dropdown">
 			<a href="allenamento.php">Allenamento</a>
 			<div class="dropdown-content">
-				<a href="allenamento.php">Cardio<hr></a>
-				<a href="allenamento.php">Pesi<hr></a>
-				<a href="allenamento.php">Corpo<br> libero<hr></a>
+
+				<input href="allenamento.php" class="submit" type="submit" id="submit" value="Cardio">
+				<hr>
+
+				<input type="submit" id="submit" value="Pesi">
+				<hr>
+
+				<input type="submit" id="submit" value="Corpo Libero">
+				<hr>
+
+
 			</div>
 		</li>
 		<!-- Fine menù a tendina -->
