@@ -97,6 +97,21 @@ h1, h2{
   color: #975806;
 }
 
+.submit{
+  background-color: #DC9F55;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+  height: 25px;
+  width: 112px;
+  font-family: "Copperplate", fantasy;
+}
+
+.submit:hover{
+    background-color: rgb(201, 130, 42);
+}
+
 #front1{
   background-image: url(../images/IMG.jpeg);
   background-size: cover;

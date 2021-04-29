@@ -114,16 +114,15 @@ function alert($msg) {
 			<a href="allenamento.php">Allenamento</a>
 			<div class="dropdown-content">
 
-				<input href="allenamento.php" class="submit" type="submit" id="submit" value="Cardio">
+				<input class="submit" type="submit" id="submit" value="Cardio">
 				<hr>
 
-				<input type="submit" id="submit" value="Pesi">
+				<input class="submit" type="submit" id="submit" value="Pesi">
 				<hr>
 
-				<input type="submit" id="submit" value="Corpo Libero">
+				<input class="submit" type="submit" id="submit" value="Corpo Libero">
 				<hr>
-
-
+				
 			</div>
 		</li>
 		<!-- Fine menù a tendina -->
@@ -147,7 +146,7 @@ function alert($msg) {
 				<div class="BoxModel"> <!-- Percorso per la registrazione -->
 					<a href="consulenza.php" style="color: black; text-decoration: none" title="Clicca per compilare il form">
 					Prenota subito una consulenza con uno dei nostri professionisti e scopri qual &egrave; l'allenamento giusto per te!
-				</a></div>
+					</a></div>
 
 			</div>
 <!-- Presentazione di chi siamo, cosa offriamo & others.. -->
