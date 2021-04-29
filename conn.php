@@ -1,5 +1,5 @@
 <?php
-$db_name = "my_barloserverweb";
+$db_name = "yourownfitnessdb";
 $mysql_username = "root";
 $mysql_password = "";
 $server_name = "localhost:3306";

@@ -1,3 +1,47 @@
+<?php
+session_start();
+require "conn.php";
+require "dbclass.php";
+
+$db = new DB_functions();
+$message = "";
+
+if (isset($_POST['email']) && isset($_POST['password'])){
+	$nome = $_POST['nome'];
+	$cognome= $_POST['cognome'];
+	$email = $_POST['email'];
+	$email = $_POST['telefono'];
+	$password1 = $_POST['password1'];
+	$password = $_POST['password'];
+	$freq_all = $_POST['freq_all'];
+	$obiettivo = $_POST['obiettivo'];
+	
+}
+
+function check_double_pw($pw1, $pw2){
+	if($pw1 != $pw2) return False;
+	else return True;
+}
+
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+?>
+
+<script>
+function checkPass(){
+         var pass  = document.getElementById("password1").value;
+         var rpass  = document.getElementById("password").value;
+        if(pass != rpass){
+            document.getElementById("submit").disabled = true;
+            //$('.missmatch').html("Entered Password is not matching!! Try Again");
+        }else{
+            //$('.missmatch').html("");
+            document.getElementById("submit").disabled = false;
+        }
+}
+</script>
+
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Page: Registrazione -->
 <html lang="it"> <!-- HTML Language, lo si mette per default -->
@@ -26,7 +70,7 @@
   <div class="container">
     <div class="title">Registrazione</div>
     <div class="content">
-      <form action="server.php" method="post"> <!-- una volta finito mettere server.php -->
+      <form action="#" method="post"> <!-- una volta finito mettere server.php -->
 <!-- Serve per identificare il servizio da mandare in post -->
 				<input type="hidden" name="service" value="registrazione">
 <!-- -->
@@ -52,12 +96,12 @@
 
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Inserisci la password" required>
+            <input name = "password1" id = "password1" onkeyup="checkPass()" type="password" placeholder="Inserisci la password" required>
           </div>
 
           <div class="input-box">
             <span class="details">Conferma Password</span>
-            <input name="password" type="text" placeholder="Conferma la tua password" required>
+            <input name="password" id="password" type="password" onkeyup="checkPass()" placeholder="Conferma la tua password" required>
           </div>
 
           <div class="input-box">
@@ -72,9 +116,9 @@
 
         </div>
         <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
+          <input type="radio" name="gender" value = "M" id="dot-1">
+          <input type="radio" name="gender" value = "F" id="dot-2">
+          <input type="radio" name="gender" value="DC" id="dot-3">
           <span class="gender-title">Sesso</span>
           <div class="category">
             <label for="dot-1">
@@ -93,7 +137,7 @@
         </div>
 
         <div class="button">
-          <input type="submit" value="Registrati!">
+          <input type="submit" id="submit" value="Registrati!">
         </div>
 				<hr>
         <div class="details" style="

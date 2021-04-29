@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (isset($_SESSION)){
+	if($_SESSION['login'] == "err"){
+	$message = "Utente non registrato!";
+	alert($message);
+	$_SESSION['login'] == "ok";
+	}
+}
+
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+?>
+
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Page: Login -->
 <html lang="it"> <!-- HTML Language, lo si mette per default -->
@@ -25,18 +40,18 @@
   <div class="container">
     <div class="title">Login</div>
     <div class="content">
-      <form action="#">
+      <form action="index.php" method='post'>
 
         <div class="user-details">
 
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Inserisci la tua email" required>
+            <input name="em" type="text" placeholder="Inserisci la tua email" required>
           </div>
 
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Inserisci la password" required>
+            <input name="pw" type="password" placeholder="Inserisci la password" required>
           </div>
         </div>
 

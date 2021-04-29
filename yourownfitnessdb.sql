@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `allenamenti_attrezzi`
 --
 
-CREATE TABLE my_barloserverweb.`allenamenti_attrezzi` (
+CREATE TABLE my_longoantonello.`allenamenti_attrezzi` (
   `nome_allenamento` varchar(20) NOT NULL,
   `id_attrezzo` int(5) NOT NULL,
   `serie` int(2) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE my_barloserverweb.`allenamenti_attrezzi` (
 -- Struttura della tabella `allenamenti_esercizi`
 --
 
-CREATE TABLE my_barloserverweb.`allenamenti_esercizi` (
+CREATE TABLE my_longoantonello.`allenamenti_esercizi` (
   `nome_allenamento` varchar(20) NOT NULL,
   `nome_esercizio` varchar(20) NOT NULL,
   `serie` int(2) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE my_barloserverweb.`allenamenti_esercizi` (
 -- Struttura della tabella `allenamento`
 --
 
-CREATE TABLE my_barloserverweb.`allenamento` (
+CREATE TABLE my_longoantonello.`allenamento` (
   `nome` varchar(20) NOT NULL,
   `durata` int(2) NOT NULL,
   `tipo` varchar(14) NOT NULL
@@ -66,7 +66,7 @@ CREATE TABLE my_barloserverweb.`allenamento` (
 -- Struttura della tabella `attrezzo`
 --
 
-CREATE TABLE my_barloserverweb.`attrezzo` (
+CREATE TABLE my_longoantonello.`attrezzo` (
   `id` int(5) NOT NULL,
   `nome` varchar(15) NOT NULL,
   `peso` int(3) DEFAULT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE my_barloserverweb.`attrezzo` (
 -- Struttura della tabella `dieta`
 --
 
-CREATE TABLE my_barloserverweb.`dieta` (
+CREATE TABLE my_longoantonello.`dieta` (
   `nome` varchar(20) NOT NULL,
   `tipo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,7 +90,7 @@ CREATE TABLE my_barloserverweb.`dieta` (
 -- Struttura della tabella `dieta_pasti`
 --
 
-CREATE TABLE my_barloserverweb.`dieta_pasti` (
+CREATE TABLE my_longoantonello.`dieta_pasti` (
   `nome_dieta` varchar(20) NOT NULL,
   `nome_pasto` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,7 +101,7 @@ CREATE TABLE my_barloserverweb.`dieta_pasti` (
 -- Struttura della tabella `esercizio`
 --
 
-CREATE TABLE my_barloserverweb.`esercizio` (
+CREATE TABLE my_longoantonello.`esercizio` (
   `nome` varchar(20) NOT NULL,
   `descrizione` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,7 +112,7 @@ CREATE TABLE my_barloserverweb.`esercizio` (
 -- Struttura della tabella `pasto`
 --
 
-CREATE TABLE my_barloserverweb.`pasto` (
+CREATE TABLE my_longoantonello.`pasto` (
   `nome` varchar(20) NOT NULL,
   `ricetta` varchar(50) DEFAULT NULL,
   `calorie` double DEFAULT NULL
@@ -124,7 +124,7 @@ CREATE TABLE my_barloserverweb.`pasto` (
 -- Struttura della tabella `utente`
 --
 
-CREATE TABLE my_barloserverweb.`utente` (
+CREATE TABLE my_longoantonello.`utente` (
   `email` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
   `nome` varchar(20) NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE my_barloserverweb.`utente` (
 -- Struttura della tabella `utenti_allenamenti`
 --
 
-CREATE TABLE my_barloserverweb.`utenti_allenamenti` (
+CREATE TABLE my_longoantonello.`utenti_allenamenti` (
   `email_utente` varchar(30) NOT NULL,
   `nome_allenamento` varchar(20) NOT NULL,
   `g_s` int(1) DEFAULT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE my_barloserverweb.`utenti_allenamenti` (
 -- Struttura della tabella `utenti_diete`
 --
 
-CREATE TABLE my_barloserverweb.`utenti_diete` (
+CREATE TABLE my_longoantonello.`utenti_diete` (
   `email_utente` varchar(30) NOT NULL,
   `nome_dieta` varchar(20) NOT NULL,
   `data_inizio` date NOT NULL,
@@ -169,67 +169,67 @@ CREATE TABLE my_barloserverweb.`utenti_diete` (
 --
 -- Indici per le tabelle `allenamenti_attrezzi`
 --
-ALTER TABLE my_barloserverweb.`allenamenti_attrezzi`
+ALTER TABLE my_longoantonello.`allenamenti_attrezzi`
   ADD PRIMARY KEY (`nome_allenamento`,`id_attrezzo`);
 
 --
 -- Indici per le tabelle `allenamenti_esercizi`
 --
-ALTER TABLE my_barloserverweb.`allenamenti_esercizi`
+ALTER TABLE my_longoantonello.`allenamenti_esercizi`
   ADD PRIMARY KEY (`nome_allenamento`,`nome_esercizio`);
 
 --
 -- Indici per le tabelle `allenamento`
 --
-ALTER TABLE my_barloserverweb.`allenamento`
+ALTER TABLE my_longoantonello.`allenamento`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `attrezzo`
 --
-ALTER TABLE my_barloserverweb.`attrezzo`
+ALTER TABLE my_longoantonello.`attrezzo`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `dieta`
 --
-ALTER TABLE my_barloserverweb.`dieta`
+ALTER TABLE my_longoantonello.`dieta`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `dieta_pasti`
 --
-ALTER TABLE my_barloserverweb.`dieta_pasti`
+ALTER TABLE my_longoantonello.`dieta_pasti`
   ADD PRIMARY KEY (`nome_dieta`,`nome_pasto`);
 
 --
 -- Indici per le tabelle `esercizio`
 --
-ALTER TABLE my_barloserverweb.`esercizio`
+ALTER TABLE my_longoantonello.`esercizio`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `pasto`
 --
-ALTER TABLE my_barloserverweb.`pasto`
+ALTER TABLE my_longoantonello.`pasto`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `utente`
 --
-ALTER TABLE my_barloserverweb.`utente`
+ALTER TABLE my_longoantonello.`utente`
   ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `utenti_allenamenti`
 --
-ALTER TABLE my_barloserverweb.`utenti_allenamenti`
+ALTER TABLE my_longoantonello.`utenti_allenamenti`
   ADD PRIMARY KEY (`email_utente`,`nome_allenamento`);
 
 --
 -- Indici per le tabelle `utenti_diete`
 --
-ALTER TABLE my_barloserverweb.`utenti_diete`
+ALTER TABLE my_longoantonello.`utenti_diete`
   ADD PRIMARY KEY (`email_utente`,`nome_dieta`,`data_inizio`,`data_fine`);
 
 --
@@ -239,7 +239,7 @@ ALTER TABLE my_barloserverweb.`utenti_diete`
 --
 -- AUTO_INCREMENT per la tabella `attrezzo`
 --
-ALTER TABLE my_barloserverweb.`attrezzo`
+ALTER TABLE my_longoantonello.`attrezzo`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

@@ -21,16 +21,19 @@ class DB_functions{
 	}
 
 	public function login($email, $password, $conn){
-		$encrypted_password = sha1($password);
-		$mysql_qry = "select * from utente where email = '$email' and password = '$encrypted_password'";
+		//$encrypted_password = sha1($password);
+		$encrypted_password = $password;
+		$mysql_qry = "select nome, cognome from utente where email = '$email' and password = '$encrypted_password'";
 		$result = mysqli_query($conn, $mysql_qry);
 		if(mysqli_num_rows($result) > 0){
-		$resrow = mysqli_fetch_row($result);
+		/*$resrow = mysqli_fetch_row($result);
 			$email = $resrow[0];
 			$nome = $resrow[1];
 			$cognome = $resrow[2];
 			$indirizzo = $resrow[4];
-		return $email.";".$nome.";".$cognome.";".$indirizzo;
+		*/
+		//return $email.";".$nome.";".$cognome.";".$indirizzo;
+		return $result;
 		}
 		else{
 			return "0";

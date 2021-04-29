@@ -1,3 +1,47 @@
+<?php
+if (!isset($_SESSION)){
+session_start();
+$_SESSION['login'] = "ok";
+}
+
+require "conn.php";
+require "dbclass.php";
+
+$db = new DB_functions();
+$message = "";
+
+if (isset($_POST['em'])){
+	$email = $_POST['em'];
+	$password = $_POST['pw'];
+	
+	if(!empty($email) && !empty($password)){
+		$user = $db->login($email, $password,$conn);
+		if ($user == "0"){
+			echo "Error";
+			$_SESSION['login'] = "err";
+			header("Location: http://localhost/yourownfitness/login.php");
+		}
+		else{
+			$resrow = mysqli_fetch_row($user);
+			$nome = $resrow[0];
+			$cognome = $resrow[1];
+			$message = "Benvenuto: ".$nome." ".$cognome." Pronto a riprendere il workout con il nostro team?";
+			$_SESSION['login'] = "done";
+			//echo $message;
+			alert($message);
+		}
+	}
+	else{
+		$message = "Inserire mail o password";
+		alert($message);
+	}
+}
+
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+?>
+
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Esame Fondamenti Web -->
 <!-- ATTENZIONE! Tutti i link e collegamenti saranno interni. Una volta messo il sito in web tali link dovranno essere esterni con path definite! -->
@@ -16,14 +60,19 @@
   <body>
 <!-- Testata del sito, Logo del sito -->
     <header>
-
+		<?php if (!isset($_SESSION) || ($_SESSION['login'] != "done")): ?>
 			<div class="Login"> <!-- Percorso per la registrazione -->
 				<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
 				Login
 			</a></div>
 
 			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
-
+		<?php endif; ?>
+		<?php if ($_SESSION['login'] == "done"): ?>
+			<div class="Login"> <!-- Percorso per la registrazione -->
+			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
+			</div>
+		<?php endif; ?>
     </header>
 
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
