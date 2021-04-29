@@ -80,7 +80,7 @@ function computeBMI(){
  <body>
 <!-- Testata del sito, Logo del sito -->
 <header>
-	<img src="#" alt="Il logo andrà qui"/>
+		<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
 
 </header>
 
