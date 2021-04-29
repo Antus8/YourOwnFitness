@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `allenamenti_attrezzi`
 --
 
-CREATE TABLE my_longoantonello.`allenamenti_attrezzi` (
+CREATE TABLE  yourownfitnessdb.`allenamenti_attrezzi` (
   `nome_allenamento` varchar(20) NOT NULL,
   `id_attrezzo` int(5) NOT NULL,
   `serie` int(2) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE my_longoantonello.`allenamenti_attrezzi` (
 -- Struttura della tabella `allenamenti_esercizi`
 --
 
-CREATE TABLE my_longoantonello.`allenamenti_esercizi` (
+CREATE TABLE  yourownfitnessdb.`allenamenti_esercizi` (
   `nome_allenamento` varchar(20) NOT NULL,
   `nome_esercizio` varchar(20) NOT NULL,
   `serie` int(2) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE my_longoantonello.`allenamenti_esercizi` (
 -- Struttura della tabella `allenamento`
 --
 
-CREATE TABLE my_longoantonello.`allenamento` (
+CREATE TABLE  yourownfitnessdb.`allenamento` (
   `nome` varchar(20) NOT NULL,
   `durata` int(2) NOT NULL,
   `tipo` varchar(14) NOT NULL
@@ -66,7 +66,7 @@ CREATE TABLE my_longoantonello.`allenamento` (
 -- Struttura della tabella `attrezzo`
 --
 
-CREATE TABLE my_longoantonello.`attrezzo` (
+CREATE TABLE  yourownfitnessdb.`attrezzo` (
   `id` int(5) NOT NULL,
   `nome` varchar(15) NOT NULL,
   `peso` int(3) DEFAULT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE my_longoantonello.`attrezzo` (
 -- Struttura della tabella `dieta`
 --
 
-CREATE TABLE my_longoantonello.`dieta` (
+CREATE TABLE  yourownfitnessdb.`dieta` (
   `nome` varchar(20) NOT NULL,
   `tipo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,7 +90,7 @@ CREATE TABLE my_longoantonello.`dieta` (
 -- Struttura della tabella `dieta_pasti`
 --
 
-CREATE TABLE my_longoantonello.`dieta_pasti` (
+CREATE TABLE  yourownfitnessdb.`dieta_pasti` (
   `nome_dieta` varchar(20) NOT NULL,
   `nome_pasto` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,7 +101,7 @@ CREATE TABLE my_longoantonello.`dieta_pasti` (
 -- Struttura della tabella `esercizio`
 --
 
-CREATE TABLE my_longoantonello.`esercizio` (
+CREATE TABLE  yourownfitnessdb.`esercizio` (
   `nome` varchar(20) NOT NULL,
   `descrizione` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,7 +112,7 @@ CREATE TABLE my_longoantonello.`esercizio` (
 -- Struttura della tabella `pasto`
 --
 
-CREATE TABLE my_longoantonello.`pasto` (
+CREATE TABLE  yourownfitnessdb.`pasto` (
   `nome` varchar(20) NOT NULL,
   `ricetta` varchar(50) DEFAULT NULL,
   `calorie` double DEFAULT NULL
@@ -124,7 +124,7 @@ CREATE TABLE my_longoantonello.`pasto` (
 -- Struttura della tabella `utente`
 --
 
-CREATE TABLE my_longoantonello.`utente` (
+CREATE TABLE  yourownfitnessdb.`utente` (
   `email` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
   `nome` varchar(20) NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE my_longoantonello.`utente` (
 -- Struttura della tabella `utenti_allenamenti`
 --
 
-CREATE TABLE my_longoantonello.`utenti_allenamenti` (
+CREATE TABLE  yourownfitnessdb.`utenti_allenamenti` (
   `email_utente` varchar(30) NOT NULL,
   `nome_allenamento` varchar(20) NOT NULL,
   `g_s` int(1) DEFAULT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE my_longoantonello.`utenti_allenamenti` (
 -- Struttura della tabella `utenti_diete`
 --
 
-CREATE TABLE my_longoantonello.`utenti_diete` (
+CREATE TABLE  yourownfitnessdb.`utenti_diete` (
   `email_utente` varchar(30) NOT NULL,
   `nome_dieta` varchar(20) NOT NULL,
   `data_inizio` date NOT NULL,
@@ -169,67 +169,67 @@ CREATE TABLE my_longoantonello.`utenti_diete` (
 --
 -- Indici per le tabelle `allenamenti_attrezzi`
 --
-ALTER TABLE my_longoantonello.`allenamenti_attrezzi`
+ALTER TABLE  yourownfitnessdb.`allenamenti_attrezzi`
   ADD PRIMARY KEY (`nome_allenamento`,`id_attrezzo`);
 
 --
 -- Indici per le tabelle `allenamenti_esercizi`
 --
-ALTER TABLE my_longoantonello.`allenamenti_esercizi`
+ALTER TABLE  yourownfitnessdb.`allenamenti_esercizi`
   ADD PRIMARY KEY (`nome_allenamento`,`nome_esercizio`);
 
 --
 -- Indici per le tabelle `allenamento`
 --
-ALTER TABLE my_longoantonello.`allenamento`
+ALTER TABLE  yourownfitnessdb.`allenamento`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `attrezzo`
 --
-ALTER TABLE my_longoantonello.`attrezzo`
+ALTER TABLE  yourownfitnessdb.`attrezzo`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `dieta`
 --
-ALTER TABLE my_longoantonello.`dieta`
+ALTER TABLE  yourownfitnessdb.`dieta`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `dieta_pasti`
 --
-ALTER TABLE my_longoantonello.`dieta_pasti`
+ALTER TABLE  yourownfitnessdb.`dieta_pasti`
   ADD PRIMARY KEY (`nome_dieta`,`nome_pasto`);
 
 --
 -- Indici per le tabelle `esercizio`
 --
-ALTER TABLE my_longoantonello.`esercizio`
+ALTER TABLE  yourownfitnessdb.`esercizio`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `pasto`
 --
-ALTER TABLE my_longoantonello.`pasto`
+ALTER TABLE  yourownfitnessdb.`pasto`
   ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `utente`
 --
-ALTER TABLE my_longoantonello.`utente`
+ALTER TABLE  yourownfitnessdb.`utente`
   ADD PRIMARY KEY (`email`);
 
 --
 -- Indici per le tabelle `utenti_allenamenti`
 --
-ALTER TABLE my_longoantonello.`utenti_allenamenti`
+ALTER TABLE  yourownfitnessdb.`utenti_allenamenti`
   ADD PRIMARY KEY (`email_utente`,`nome_allenamento`);
 
 --
 -- Indici per le tabelle `utenti_diete`
 --
-ALTER TABLE my_longoantonello.`utenti_diete`
+ALTER TABLE  yourownfitnessdb.`utenti_diete`
   ADD PRIMARY KEY (`email_utente`,`nome_dieta`,`data_inizio`,`data_fine`);
 
 --
@@ -239,7 +239,7 @@ ALTER TABLE my_longoantonello.`utenti_diete`
 --
 -- AUTO_INCREMENT per la tabella `attrezzo`
 --
-ALTER TABLE my_longoantonello.`attrezzo`
+ALTER TABLE  yourownfitnessdb.`attrezzo`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

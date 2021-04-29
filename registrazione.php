@@ -1,30 +1,12 @@
 <?php
 session_start();
-require "conn.php";
-require "dbclass.php";
-
-$db = new DB_functions();
-$message = "";
-
-if (isset($_POST['email']) && isset($_POST['password'])){
-	$nome = $_POST['nome'];
-	$cognome= $_POST['cognome'];
-	$email = $_POST['email'];
-	$email = $_POST['telefono'];
-	$password1 = $_POST['password1'];
-	$password = $_POST['password'];
-	$freq_all = $_POST['freq_all'];
-	$obiettivo = $_POST['obiettivo'];
-	
-}
-
-function check_double_pw($pw1, $pw2){
-	if($pw1 != $pw2) return False;
-	else return True;
+if(isset($_SESSION['reg']) && $_SESSION['reg'] == "err"){
+  alert("Email già utilizzata in fase di regsitrazione!");
+  $_SESSION['reg'] == "ok";
 }
 
 function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
+  echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 ?>
 
@@ -70,7 +52,7 @@ function checkPass(){
   <div class="container">
     <div class="title">Registrazione</div>
     <div class="content">
-      <form action="#" method="post"> <!-- una volta finito mettere server.php -->
+      <form action="index.php" method="post"> <!-- una volta finito mettere server.php -->
 <!-- Serve per identificare il servizio da mandare in post -->
 				<input type="hidden" name="service" value="registrazione">
 <!-- -->

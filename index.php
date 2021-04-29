@@ -2,6 +2,7 @@
 if (!isset($_SESSION)){
 session_start();
 $_SESSION['login'] = "ok";
+$_SESSION['reg'] = "ok";
 }
 
 require "conn.php";
@@ -13,7 +14,7 @@ $message = "";
 if (isset($_POST['em'])){
 	$email = $_POST['em'];
 	$password = $_POST['pw'];
-
+	
 	if(!empty($email) && !empty($password)){
 		$user = $db->login($email, $password,$conn);
 		if ($user == "0"){
@@ -27,6 +28,9 @@ if (isset($_POST['em'])){
 			$cognome = $resrow[1];
 			$message = "Benvenuto: ".$nome." ".$cognome." Pronto a riprendere il workout con il nostro team?";
 			$_SESSION['login'] = "done";
+			$_SESSION['nome'] = $nome;
+			$_SESSION['cognome'] = $cognome;
+			$_SESSION['email'] = $email;
 			//echo $message;
 			alert($message);
 		}
@@ -34,6 +38,31 @@ if (isset($_POST['em'])){
 	else{
 		$message = "Inserire mail o password";
 		alert($message);
+	}
+}
+else{
+	if(isset($_POST['email']) && isset($_POST['password'])){
+		$nome = $_POST['nome'];
+		$cognome= $_POST['cognome'];
+		$email = $_POST['email'];
+		$telefono = $_POST['telefono'];
+		$password = $_POST['password'];
+		$freq_all = $_POST['freq_all'];
+		$obiettivo = $_POST['obiettivo'];
+		$sesso = $_POST['gender'];
+
+		$user = $db->storeUser($email, $password, $nome, $cognome, $sesso, $telefono, $obiettivo, $freq_all, $conn);
+		if($user == 0){
+			$_SESSION['reg'] = "err";
+			header("Location: http://localhost/yourownfitness/registrazione.php");
+		} 
+		else{
+			alert("Registrazione avvenuta con successo. Benvenuto nel nostro team!");
+			$_SESSION['nome'] = $_POST['nome'];
+			$_SESSION['cognome'] = $_POST['cognome'];
+			$_SESSION['email'] = $_POST['email'];
+			$_SESSION['login'] = "done";
+		} 
 	}
 }
 
@@ -60,7 +89,7 @@ function alert($msg) {
   <body>
 <!-- Testata del sito, Logo del sito -->
     <header>
-		<?php if (!isset($_SESSION) || ($_SESSION['login'] != "done")): ?>
+		<?php if (($_SESSION['login'] != "done")): ?>
 			<div class="Login"> <!-- Percorso per la registrazione -->
 				<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
 				Login

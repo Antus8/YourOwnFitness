@@ -1,15 +1,35 @@
-<!DOCTYPE="html">
-<!-- Your Own Fitness - Page: Calcolo IMC  -->
-<html lang="it"> <!-- HTML Language, lo si mette per default -->
-	<head>
-		<!-- Intestazione, dichiariamo i meta dati (N.B. keywords non necessari) -->
-    <title> Your Own Fitness - Calcolo IMC </title>
-		<meta name="author" content="Francesco Barletta" />
-		<meta name="description" content="Your Own Fitness (YOF) - Calcolo IMC" />
-		<meta name="keywords" content="fitness" />
-<!-- File .css external, messo nella repository css/style.css -->
-	 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<!-- Script javascript per calcolo BMI -->
+<?php
+session_start();
+require "conn.php";
+require "dbclass.php";
+
+$db = new DB_functions();
+
+if (isset($_POST['height'])){
+	$BMI = computeBMI();
+	$user = $db->setIMC($_SESSION['email'], $BMI, $conn);
+}
+
+function computeBMI(){
+	$height=$_POST['height'];
+	$heightunits=$_POST["heightunits"];
+	$weight=$_POST["weight"];
+	$weightunits=$_POST["weightunits"];
+
+
+	//Convert all units to metric
+	if ($heightunits=="inches") $height/=39.3700787;
+	if ($weightunits=="lb") $weight/=2.20462;
+
+	//Perform calculation
+	$BMI=$weight/pow($height,2);
+	$BMI = round($BMI * 100 , 2 ,PHP_ROUND_HALF_UP)/100;
+
+	//Display result of calculation
+	return $BMI;
+}
+?>
+
 <script type="text/javascript">
 		function computeBMI()
 		{
@@ -41,18 +61,26 @@
 				document.getElementById("answer").value = output;
 		}
 </script>
+
+<!DOCTYPE="html">
+<!-- Your Own Fitness - Page: Calcolo IMC  -->
+<html lang="it"> <!-- HTML Language, lo si mette per default -->
+	<head>
+		<!-- Intestazione, dichiariamo i meta dati (N.B. keywords non necessari) -->
+    <title> Your Own Fitness - Calcolo IMC </title>
+		<meta name="author" content="Francesco Barletta" />
+		<meta name="description" content="Your Own Fitness (YOF) - Calcolo IMC" />
+		<meta name="keywords" content="fitness" />
+<!-- File .css external, messo nella repository css/style.css -->
+	 <link rel="stylesheet" type="text/css" href="css/styles.css">
+<!-- Script javascript per calcolo BMI -->
+
  </head>
 
  <body>
 <!-- Testata del sito, Logo del sito -->
 <header>
-
-	<div class="Login"> <!-- Percorso per la registrazione -->
-		<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
-		Login
-	</a></div>
-
-	<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
+	<img src="#" alt="Il logo andrà qui"/>
 
 </header>
 
@@ -104,12 +132,12 @@
 			<br>
 			<div class="title">BMI Calculator (inserisci i dati)</div>
 				<br>
-				<form action="javascript:void(0)">
+				<form action="#" method='post'>
 				<div class="user-details">
 				<div class="input-box">
 				<span class="details">Altezza</span><br>
-					<input type="text" id="height" style="width: 30%"required/>
-					<select type="multiple" id="heightunits" style="
+					<input type="text" name ='height' id="height" style="width: 30%" required value= "<?php if(isset($_POST['height'])): echo $_POST['height']; endif;?>"/>
+					<select type="multiple"  name="heightunits" id="heightunits" style="
 					height: 46px;
 					width: 30%;
 					outline: none;
@@ -127,8 +155,8 @@
 				<br><br>
 				<div class="input-box">
 					<span class="details">Peso</span><br>
-					<input type="text" id="weight" style="width: 30%" required/>
-					<select type="multiple" id="weightunits" style="
+					<input type="text" id="weight" name = 'weight' style="width: 30%" value = "<?php if(isset($_POST['weight'])): echo $_POST['weight']; endif;?>" required/>
+					<select type="multiple" name = "weightunits" id="weightunits" style="
 					height: 46px;
 					width: 30%;
 					outline: none;
@@ -148,7 +176,7 @@
 			<div class="button">
 				<input type="submit" name="calculate" value="Calcola il tuo IMC!" onclick="computeBMI();">
 			</div>
-			<h1>Il tuo IMC &egrave;: <span id="output">-</span></h1>
+			<h1>Il tuo IMC &egrave;: <span name = 'imc' id="output"><?php if (isset($_POST['height'])): echo'<script type="text/javascript">','computeBMI();','</script>';endif;?></span></h1>
 			<hr>
 			<p id="pre">Controlla la tabella sottostante per confrontare il tuo <b>IMC</b><p>
 <!-- Tabella BMI -->
