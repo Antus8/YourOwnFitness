@@ -48,20 +48,27 @@ echo $_POST['submit'];
 		<li class="dropdown">
 
 		<!-- Allenamento -->
-		<form id="allenamentoform" action="#" method="get">
+		<form id="allenamentoform" action="allenamento.php" method="get">
 				<input class="submit1" type="submit" name="submit1" id="allenamentosubmit" value="Allenamento">
 		</form>
 
 			<div class="dropdown-content">
 
+				<form id="allenamentoformcardio" action="#" method="get">
 				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
 				<hr>
+				</form>
 
+				<form id="allenamentoformpesi" action="#" method="get">
 				<input class="submit" type="submit" name='submit' id="pesisubmit" value="Pesi">
 				<hr>
+				</form>
 
+				<form id="allenamentoformcorpo" action="#" method="get">
 				<input class="submit" type="submit" name='submit' id="clsubmit" value="Corpo Libero">
 				<hr>
+				</form>
+
 				</script>
 			</div>
 		</form>
