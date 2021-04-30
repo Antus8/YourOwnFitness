@@ -105,12 +105,19 @@ function alert($msg) {
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
 <nav>
 	<ul>
-		<li><a href="index.php">Home</a></li>
+		<!-- Home -->
+		<li><form id="homeform" action="#" method="get">
+			<input class="submit1" type="submit" name="submit1" id="homesubmit" value="Home">
+		</form></li>
 
 		<!-- Menù a tendina -->
 		<li class="dropdown">
-		<form id="allenamentoform" action="allenamento.php" method="post">
-			<a href="allenamento.php">Allenamento</a>
+
+		<!-- Allenamento -->
+		<form id="allenamentoform" action="allenamento.php" method="get">
+				<input class="submit1" type="submit" name="submit1" id="allenamentosubmit" value="Allenamento">
+		</form>
+
 			<div class="dropdown-content">
 
 				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
@@ -127,10 +134,31 @@ function alert($msg) {
 		</li>
 		<!-- Fine menù a tendina -->
 
+		<!-- Calcolo IMC -->
+		<li><form id="imcform" action="imc.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="imcsubmit" value="Calcolo IMC">
+		</form></li>
+
+		<!-- Diete -->
+		<li><form id="dieteform" action="diete.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="dietesubmit" value="Diete">
+		</form></li>
+
+		<!-- Consulenze -->
+		<li><form id="imcform" action="consulenza.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="consulenzasubmit" value="Consulenze">
+		</form></li>
+
+		<!-- Contatti -->
+		<li><form id="imcform" action="contatti.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="imcsubmit" value="Contatti">
+		</form></li>
+
+		<!-- Vecchio menù a tendina
 		<li><a href="imc.php">Calcolo IMC</a></li>
 		<li><a href="diete.php">Diete</a></li>
 		<li><a href="consulenza.php">Consulenze</a></li>
-		<li><a href="contatti.php">Contatti</a></li>
+		<li><a href="contatti.php">Contatti</a></li> -->
 	</ul>
 </nav>
 

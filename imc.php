@@ -9,7 +9,7 @@ if (isset($_POST['height'])){
 	$BMI = computeBMI();
 	$_POST['x'] = 0;
 	$_POST['y'] = 1000;
-	
+
 	$user = $db->setIMC($_SESSION['email'], $BMI, $conn);
 }
 
@@ -47,7 +47,7 @@ if( typeof( window.pageYOffset ) == 'number' ) {
     //DOM compliant
     y = document.body.scrollTop;
     x = document.body.scrollLeft;
-} else if( document.documentElement && 
+} else if( document.documentElement &&
 ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
     //IE6 standards compliant mode
     y = document.documentElement.scrollTop;
@@ -60,7 +60,7 @@ return obj;
 };
 //////////////////////////////////
 function saveScroll(){
-var scroll = get_scroll(); 
+var scroll = get_scroll();
 document.getElementById("x").value = scroll.x;
 document.getElementById("y").value = scroll.y;
 }
@@ -129,27 +129,65 @@ function computeBMI()
 </header>
 
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
-	<nav>
-	 <ul>
-		 <li><a href="index.php">Home</a></li>
+<!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->
+<nav>
+	<ul>
+		<!-- Home -->
+		<li><form id="homeform" action="index.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="homesubmit" value="Home">
+		</form></li>
 
-		 <!-- Menù a tendina -->
-		 <li class="dropdown">
- 			<a href="allenamento.php">Allenamento</a>
- 			<div class="dropdown-content">
- 				<a href="allenamento.php">Cardio<hr></a>
- 				<a href="allenamento.php">Pesi<hr></a>
- 				<a href="allenamento.php">Corpo<br> libero<hr></a>
- 			</div>
- 		</li>
-		 <!-- Fine menù a tendina -->
+		<!-- Menù a tendina -->
+		<li class="dropdown">
 
-		 <li><a href="imc.php">Calcolo IMC</a></li>
-		 <li><a href="diete.php">Diete</a></li>
-		 <li><a href="consulenza.php">Consulenze</a></li>
-		 <li><a href="contatti.php">Contatti</a></li>
-	 </ul>
-	</nav>
+		<!-- Allenamento -->
+		<form id="allenamentoform" action="allenamento.php" method="get">
+				<input class="submit1" type="submit" name="submit1" id="allenamentosubmit" value="Allenamento">
+		</form>
+
+			<div class="dropdown-content">
+
+				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
+				<hr>
+
+				<input class="submit" type="submit" name='submit' id="pesisubmit" value="Pesi">
+				<hr>
+
+				<input class="submit" type="submit" name='submit' id="clsubmit" value="Corpo Libero">
+				<hr>
+				</script>
+			</div>
+		</form>
+		</li>
+		<!-- Fine menù a tendina -->
+
+		<!-- Calcolo IMC -->
+		<li><form id="imcform" action="#" method="get">
+			<input class="submit1" type="submit" name="submit1" id="imcsubmit" value="Calcolo IMC">
+		</form></li>
+
+		<!-- Diete -->
+		<li><form id="dieteform" action="diete.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="dietesubmit" value="Diete">
+		</form></li>
+
+		<!-- Consulenze -->
+		<li><form id="imcform" action="consulenza.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="consulenzasubmit" value="Consulenze">
+		</form></li>
+
+		<!-- Contatti -->
+		<li><form id="imcform" action="contatti.php" method="get">
+			<input class="submit1" type="submit" name="submit1" id="imcsubmit" value="Contatti">
+		</form></li>
+
+		<!-- Vecchio menù a tendina
+		<li><a href="imc.php">Calcolo IMC</a></li>
+		<li><a href="diete.php">Diete</a></li>
+		<li><a href="consulenza.php">Consulenze</a></li>
+		<li><a href="contatti.php">Contatti</a></li> -->
+	</ul>
+</nav>
 
 		<div id="content">
 		 <div id="front1">
@@ -223,7 +261,7 @@ function computeBMI()
 				<input type="submit" name="calculate" value="Calcola il tuo IMC!" onclick="saveScroll();">
 			</div>
 			<h1>Il tuo IMC &egrave;: <span name = 'imc' id="output"><?php if (isset($_POST['height'])): echo'<script type="text/javascript">','computeBMI();','</script>';endif;?></span></h1>
-			
+
 			<hr>
 			<p id="pre">Controlla la tabella sottostante per confrontare il tuo <b>IMC</b><p>
 <!-- Tabella BMI -->
