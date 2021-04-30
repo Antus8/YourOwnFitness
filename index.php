@@ -84,7 +84,7 @@ function alert($msg) {
 <!-- File .css external, messo nella repository css/style.css -->
 	 <link rel="stylesheet" type="text/css" href="css/styles.css">
  </head>
-
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- Corpo del sito, varie sezioni + script in PHP -->
   <body>
 <!-- Testata del sito, Logo del sito -->
@@ -98,9 +98,7 @@ function alert($msg) {
 			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
 		<?php endif; ?>
 		<?php if ($_SESSION['login'] == "done"): ?>
-			<div class="Login"> <!-- Percorso per la registrazione -->
 			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
-			</div>
 		<?php endif; ?>
     </header>
 
@@ -111,19 +109,21 @@ function alert($msg) {
 
 		<!-- Menù a tendina -->
 		<li class="dropdown">
+		<form id="allenamentoform" action="allenamento.php" method="post">
 			<a href="allenamento.php">Allenamento</a>
 			<div class="dropdown-content">
 
-				<input class="submit" type="submit" id="submit" value="Cardio">
+				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
 				<hr>
 
-				<input class="submit" type="submit" id="submit" value="Pesi">
+				<input class="submit" type="submit" name='submit' id="pesisubmit" value="Pesi">
 				<hr>
 
-				<input class="submit" type="submit" id="submit" value="Corpo Libero">
+				<input class="submit" type="submit" name='submit' id="clsubmit" value="Corpo Libero">
 				<hr>
-				
+				</script>
 			</div>
+		</form>
 		</li>
 		<!-- Fine menù a tendina -->
 

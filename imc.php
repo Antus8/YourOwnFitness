@@ -7,6 +7,9 @@ $db = new DB_functions();
 
 if (isset($_POST['height'])){
 	$BMI = computeBMI();
+	$_POST['x'] = 0;
+	$_POST['y'] = 1000;
+	
 	$user = $db->setIMC($_SESSION['email'], $BMI, $conn);
 }
 
@@ -31,35 +34,76 @@ function computeBMI(){
 ?>
 
 <script type="text/javascript">
-		function computeBMI()
-		{
-				//Obtain user inputs
-				var height=Number(document.getElementById("height").value);
-				var heightunits=document.getElementById("heightunits").value;
-				var weight=Number(document.getElementById("weight").value);
-				var weightunits=document.getElementById("weightunits").value;
+<!--
+/////////////////////////////////////////////////////////
+//get scroll position
+var get_scroll = function(){
+var x = 0, y = 0;
+if( typeof( window.pageYOffset ) == 'number' ) {
+    //Netscape compliant
+    y = window.pageYOffset;
+    x = window.pageXOffset;
+} else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+    //DOM compliant
+    y = document.body.scrollTop;
+    x = document.body.scrollLeft;
+} else if( document.documentElement && 
+( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+    //IE6 standards compliant mode
+    y = document.documentElement.scrollTop;
+    x = document.documentElement.scrollLeft;
+}
+var obj = new Object();
+obj.x = x;
+obj.y = y;
+return obj;
+};
+//////////////////////////////////
+function saveScroll(){
+var scroll = get_scroll(); 
+document.getElementById("x").value = scroll.x;
+document.getElementById("y").value = scroll.y;
+}
+//////////////////////////////////////////////
+////////This runs at <body onload = "setScroll()" >///////////////////////////
+function setScroll(){
+var x = "<?php echo $_POST['x']; ?>";
+var y = "<?php echo $_POST['y']; ?>";
+
+if(typeof x != 'undefined')
+window.scrollTo(x, y);
+}
+
+function computeBMI()
+{
+		//Obtain user inputs
+		var height=Number(document.getElementById("height").value);
+		var heightunits=document.getElementById("heightunits").value;
+		var weight=Number(document.getElementById("weight").value);
+		var weightunits=document.getElementById("weightunits").value;
 
 
-				//Convert all units to metric
-				if (heightunits=="inches") height/=39.3700787;
-				if (weightunits=="lb") weight/=2.20462;
+		//Convert all units to metric
+		if (heightunits=="inches") height/=39.3700787;
+		if (weightunits=="lb") weight/=2.20462;
 
-				//Perform calculation
-				var BMI=weight/Math.pow(height,2);
+		//Perform calculation
+		var BMI=weight/Math.pow(height,2);
 
-				//Display result of calculation
-				document.getElementById("output").innerText=Math.round(BMI*100)/100;
+		//Display result of calculation
+		document.getElementById("output").innerText=Math.round(BMI*100)/100;
 
-				if (output<18.5)
-				document.getElementById("comment").value = "Underweight";
-				if (output>=18.5 && output<=25)
-				document.getElementById("comment").value = "Normal";
-				if (output>=25 && output<=30)
-				document.getElementById("comment").value = "Obese";
-				if (output>30)
-				document.getElementById("comment").value = "Overweight";
-				document.getElementById("answer").value = output;
-		}
+		if (output<18.5)
+		document.getElementById("comment").value = "Underweight";
+		if (output>=18.5 && output<=25)
+		document.getElementById("comment").value = "Normal";
+		if (output>=25 && output<=30)
+		document.getElementById("comment").value = "Obese";
+		if (output>30)
+		document.getElementById("comment").value = "Overweight";
+		document.getElementById("answer").value = output;
+		saveScroll();
+}
 </script>
 
 <!DOCTYPE="html">
@@ -77,7 +121,7 @@ function computeBMI(){
 
  </head>
 
- <body>
+ <body onload = "setScroll()">
 <!-- Testata del sito, Logo del sito -->
 <header>
 		<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
@@ -136,7 +180,7 @@ function computeBMI(){
 				<div class="user-details">
 				<div class="input-box">
 				<span class="details">Altezza</span><br>
-					<input type="text" name ='height' id="height" style="width: 30%" required value= "<?php if(isset($_POST['height'])): echo $_POST['height']; endif;?>"/>
+					<input type="text" name ='height' id="height" onkeyup="saveScroll()" style="width: 30%" required value= "<?php if(isset($_POST['height'])): echo $_POST['height']; endif;?>"/>
 					<select type="multiple"  name="heightunits" id="heightunits" style="
 					height: 46px;
 					width: 30%;
@@ -155,7 +199,7 @@ function computeBMI(){
 				<br><br>
 				<div class="input-box">
 					<span class="details">Peso</span><br>
-					<input type="text" id="weight" name = 'weight' style="width: 30%" value = "<?php if(isset($_POST['weight'])): echo $_POST['weight']; endif;?>" required/>
+					<input type="text" id="weight" name = 'weight' onkeyup="saveScroll()" style="width: 30%" value = "<?php if(isset($_POST['weight'])): echo $_POST['weight']; endif;?>" required/>
 					<select type="multiple" name = "weightunits" id="weightunits" style="
 					height: 46px;
 					width: 30%;
@@ -174,9 +218,12 @@ function computeBMI(){
 		</div>
 
 			<div class="button">
-				<input type="submit" name="calculate" value="Calcola il tuo IMC!" onclick="computeBMI();">
+				<input name="x" id="x" type="hidden" value="" />
+				<input name="y" id="y" type="hidden" value="" />
+				<input type="submit" name="calculate" value="Calcola il tuo IMC!" onclick="saveScroll();">
 			</div>
 			<h1>Il tuo IMC &egrave;: <span name = 'imc' id="output"><?php if (isset($_POST['height'])): echo'<script type="text/javascript">','computeBMI();','</script>';endif;?></span></h1>
+			
 			<hr>
 			<p id="pre">Controlla la tabella sottostante per confrontare il tuo <b>IMC</b><p>
 <!-- Tabella BMI -->

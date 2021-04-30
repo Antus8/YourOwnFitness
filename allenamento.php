@@ -1,3 +1,13 @@
+<?php
+session_start();
+require "conn.php";
+require "dbclass.php";
+
+$db = new DB_functions();
+echo $_POST['submit'];
+?>
+
+
 <!-- Utilizzo l'iframe in modo da poter visualizzare le diverse schede sulla stessa pagina "allenamento.php" -->
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Page: Allenamento -->
