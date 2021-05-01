@@ -29,5 +29,24 @@ class DB_functions{
 		$mysql_qry = "update utente set imc = '$imc' where email = '$email'";
 		$result = mysqli_query($conn, $mysql_qry);
 	}
+
+	public function getTrainingsPerType($type, $conn){
+		$mysql_qry = "SELECT * FROM schede_complete where tipo= '$type'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
+
+	public function getAllTrainings($conn){
+		$mysql_qry = "SELECT * FROM schede_complete";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
+
+	public function getTrainingsPerTypeUser($email, $type, $conn){
+		$mysql_qry = "select utente set imc = '$imc' where email = '$email'";
+		$result = mysqli_query($conn, $mysql_qry);
+	}
 }
+
 ?>
+

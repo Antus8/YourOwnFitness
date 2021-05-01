@@ -2,9 +2,28 @@
 session_start();
 require "conn.php";
 require "dbclass.php";
-
+echo $_SESSION['email'];
 $db = new DB_functions();
-echo $_POST['submit'];
+$type = $_POST['submit'];
+
+if ($type == "Allenamento"){
+	$trainings = $db->getAllTrainings($conn);
+}
+else $trainings = $db->getTrainingsPerType($type,$conn);
+
+if(mysqli_num_rows($trainings) > 0){ 
+	for ($x = 0; $x < mysqli_num_rows($trainings); $x++){
+		$resrow = mysqli_fetch_row($trainings);
+		$nome = $resrow[0];
+		$tipo = $resrow[1];
+		$durata = $resrow[2];
+		$nome_esercizio_attrezzo = $resrow[3];
+		$peso = $resrow[4];
+		$serie = $resrow[5];
+		$ripetizioni = $resrow[6];
+		echo $nome.$tipo.$durata.$nome_esercizio_attrezzo.$peso.$serie.$ripetizioni;
+	}
+}
 ?>
 
 
@@ -41,16 +60,15 @@ echo $_POST['submit'];
 	<ul>
 		<!-- Home -->
 		<li><form id="homeform" action="index.php" method="get">
-			<input class="submit1" type="submit" name="submit1" id="homesubmit" value="Home">
+			<input class="submit1" type="submit" name="submit" id="homesubmit" value="Home">
 		</form></li>
 
 		<!-- Menù a tendina -->
 		<li class="dropdown">
 
 		<!-- Allenamento -->
-		<form id="allenamentoform" action="#" method="get">
-				<input class="submit1" type="submit" name="submit1" id="allenamentosubmit" value="Allenamento">
-		</form>
+		<form id="allenamentoform" action="#" method="post">
+				<input class="submit1" type="submit" name="submit" id="allenamentosubmit" value="Allenamento">
 
 			<div class="dropdown-content">
 

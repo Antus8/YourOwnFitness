@@ -114,9 +114,9 @@ function alert($msg) {
 		<li class="dropdown">
 
 		<!-- Allenamento -->
-		<form id="allenamentoform" action="allenamento.php" method="get">
-				<input class="submit1" type="submit" name="submit1" id="allenamentosubmit" value="Allenamento">
-		</form>
+		<form id="allenamentoform" action="allenamento.php" method="post">
+				<input class="submit1" type="submit" name="submit" id="allenamentosubmit" value="Allenamento">
+		
 
 			<div class="dropdown-content">
 
