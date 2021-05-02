@@ -2,6 +2,7 @@
 session_start();
 require "conn.php";
 require "dbclass.php";
+
 echo $_SESSION['email'];
 $db = new DB_functions();
 $type = $_POST['submit'];
@@ -39,6 +40,8 @@ if(mysqli_num_rows($trainings) > 0){
 		<meta name="keywords" content="fitness" />
 <!-- File .css external, messo nella repository css/style.css -->
 	 <link rel="stylesheet" type="text/css" href="css/styles.css">
+	 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
  </head>
 
  <body>
@@ -67,7 +70,7 @@ if(mysqli_num_rows($trainings) > 0){
 		<li class="dropdown">
 
 		<!-- Allenamento -->
-		<form id="allenamentoform" action="#" method="post">
+		<form id="allenamentoform" method="post">
 				<input class="submit1" type="submit" name="submit" id="allenamentosubmit" value="Allenamento">
 
 			<div class="dropdown-content" style="margin-top: 0px;">
@@ -79,6 +82,8 @@ if(mysqli_num_rows($trainings) > 0){
 				<hr>
 
 				<input class="submit" type="submit" name='submit' id="clsubmit" value="Corpo Libero">
+				<input type="hidden" name='ciao' value="Ciao">
+				<input type="hidden" name='come stai' value="Come stai?">
 				<hr>
 				</script>
 			</div>
@@ -152,7 +157,7 @@ if(mysqli_num_rows($trainings) > 0){
 			</div>
 
 	</footer>
-
+<?php include("ajax.js"); ?>
 </body>
 
 </html>
