@@ -124,8 +124,17 @@ function computeBMI()
  <body onload = "setScroll()">
 <!-- Testata del sito, Logo del sito -->
 <header>
-		<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
+<?php if (($_SESSION['login'] != "done")): ?>
+	<div class="Login"> <!-- Percorso per la registrazione -->
+		<a href="login.php" style="color: black; text-decoration: none" title="Clicca per il login">
+		Login
+	</a></div>
 
+	<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
+<?php endif; ?>
+<?php if ($_SESSION['login'] == "done"): ?>
+	<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
+<?php endif; ?>
 </header>
 
 <!-- Menù del sito, realizzato come tendina a comparsa verso il basso -->

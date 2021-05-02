@@ -116,9 +116,9 @@ function alert($msg) {
 		<!-- Allenamento -->
 		<form id="allenamentoform" action="allenamento.php" method="post">
 				<input class="submit1" type="submit" name="submit" id="allenamentosubmit" value="Allenamento">
-		
 
-			<div class="dropdown-content">
+
+			<div class="dropdown-content" style="margin-top: 0px;">
 
 				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
 				<hr>

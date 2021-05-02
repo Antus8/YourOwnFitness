@@ -45,6 +45,7 @@ nav{
   text-shadow: 1px 0px black;
   font-family: "Copperplate", fantasy;
   font-size: 130%;
+  height: 45px;
 }
 
 nav ul{
@@ -53,29 +54,30 @@ nav ul{
     padding: 0;
 }
 
-nav li{
+nav li {
   display: inline-block;
-  padding: 15px;
+  padding: 0;
 }
 
-nav li:hover{
+/*nav li form:hover{
   background-color: rgb(201, 130, 42);
-}
+}*/
 
 nav li a{
   color: white;
   text-decoration: none;
 }
+
 /*Fine proprietà del menù*/
 
 .dropdown-content{
   position: absolute;
   background-color: #DC9F55;
-  margin-top: 15px;
-  padding: 39px; /* Modificare questo per centrare */
+  margin-top: -19px;
+  padding: 5px; /* Modificare questo per centrare */
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-left: -15px;
+  margin-left: 0px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
   display: none;
 }
@@ -109,6 +111,21 @@ h1, h2{
 }
 
 .submit:hover{
+    background-color: rgb(201, 130, 42);
+}
+
+.submit1{
+  background-color: rgb(168, 110, 35);
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+  height: 45px;
+  width: 122px;
+  font-family: "Copperplate", fantasy;
+}
+
+.submit1:hover{
     background-color: rgb(201, 130, 42);
 }
 

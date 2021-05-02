@@ -11,7 +11,7 @@ if ($type == "Allenamento"){
 }
 else $trainings = $db->getTrainingsPerType($type,$conn);
 
-if(mysqli_num_rows($trainings) > 0){ 
+if(mysqli_num_rows($trainings) > 0){
 	for ($x = 0; $x < mysqli_num_rows($trainings); $x++){
 		$resrow = mysqli_fetch_row($trainings);
 		$nome = $resrow[0];
@@ -70,7 +70,7 @@ if(mysqli_num_rows($trainings) > 0){
 		<form id="allenamentoform" action="#" method="post">
 				<input class="submit1" type="submit" name="submit" id="allenamentosubmit" value="Allenamento">
 
-			<div class="dropdown-content">
+			<div class="dropdown-content" style="margin-top: 0px;">
 
 				<input class="submit" type="submit" name='submit' id="cardiosubmit" value="Cardio">
 				<hr>
