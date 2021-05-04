@@ -2,7 +2,6 @@
 session_start();
 require "conn.php";
 require "dbclass.php";
-echo $_SESSION['email'];
 $db = new DB_functions();
 $type = $_POST['submit'];
 
@@ -38,6 +37,8 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	   <!-- Latest compiled and minified JavaScript -->
 	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
  </head>
 
  <body>
@@ -122,7 +123,10 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 	</div>
 
 		<!-- Qui andranno le varie schede di allenamento attraverso l'iframe. Utilizzare4 iframe anche per linkare i video tutorial di determinati esercizi su YouTube -->
+		
+		
 		<div id="Presentation">
+		<?php if (($_POST['submit'] == "Pesi") || ($_POST['submit'] == "Allenamento")): ?>
 			<h1><a name= "PESI"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>ALLENAMENTO CON I PESI</strong></p></a></h1>
 
 			<div>
@@ -140,7 +144,7 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 					<div class="item active">
 						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
 					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
+						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
 
 					  </div>
 					</div>
@@ -177,7 +181,9 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 				  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
 				</div>
 		</div>
-
+		<?php endif; ?>
+	
+	<?php if (($_POST['submit'] == "Corpo Libero") || ($_POST['submit'] == "Allenamento")): ?>
 	<h1><a name= "CORPOLIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CORPO LIBERO</strong></p></a></h1>
 
 	<div>
@@ -227,8 +233,9 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 		  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
 		</div>
 </div>
-<h1><a name= "CORPOLIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CORPO LIBERO</strong></p></a></h1>
-
+<?php endif; ?>
+<?php if (($_POST['submit'] == "Cardio") || ($_POST['submit'] == "Allenamento")): ?>
+<h1><a name= "CORPOLIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CARDIO</strong></p></a></h1>
 <div>
 	<!-- Qui vanno gli allenamenti -->
 	<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
@@ -276,6 +283,7 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 	  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
 	</div>
 </div>
+<?php endif; ?>
 
 			<!-- .modal -->
 <div class="modal fade" id="Mymodal">
