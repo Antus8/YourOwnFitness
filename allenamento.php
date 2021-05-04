@@ -9,10 +9,33 @@ if ($type == "Allenamento"){
 	$trainings = $db->getAllTrainingsNoDupl($conn);
 }
 else $trainings = $db->getTrainingsPerTypeNoDupl($type,$conn);
+$schede = $db->getAllTrainings($conn);
 $length = mysqli_num_rows($trainings);
 ?>
 
-
+<script type="text/javascript">
+function show_scheda(scelta){
+	alert(scelta);
+	/*document.getElementById("modal-body").innerHTML += "<?php 
+		for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+			$resrow = mysqli_fetch_row($schede);
+			if($resrow[0] == scelta){
+						$nome = $resrow[0];
+						$peso = $resrow[4];
+						$tipo = $resrow[1];
+						$durata = $resrow[2];
+						$nome_esercizio_attrezzo = $resrow[3];
+						$serie = $resrow[5];
+						$ripetizioni = $resrow[6];
+			}?>"+
+			"<tr><td><?php echo $nome; ?> </td> <td><?php echo $tipo;?></td><td><?php echo $durata;?></td><td><?php echo $nome_esercizio_attrezzo;?></td><td><?php echo $serie;?></td><td><?php echo $ripetizioni;?></td></tr>"+
+		<?php } ?>";
+	var x = document.getElementById("Mymodal1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+}*/
+}
+</script>
 
 <!-- Utilizzo l'iframe in modo da poter visualizzare le diverse schede sulla stessa pagina "allenamento.php" -->
 <!DOCTYPE="html">
@@ -150,9 +173,8 @@ $length = mysqli_num_rows($trainings);
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
 					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
 					<div class="item">
@@ -160,7 +182,7 @@ $length = mysqli_num_rows($trainings);
 					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
 
 					<div class="carousel-caption">
-					<button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
 					</div>
 					</div>
 					<?php }?>
@@ -203,9 +225,8 @@ $length = mysqli_num_rows($trainings);
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
 					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
+						 <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
 					<div class="item">
@@ -213,7 +234,7 @@ $length = mysqli_num_rows($trainings);
 					<img class="w3-image" src="./images/PESI2.png" style="width:100%">
 
 					<div class="carousel-caption">
-					<button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
 					</div>
 					</div>
 					<?php }?>
@@ -257,9 +278,8 @@ $length = mysqli_num_rows($trainings);
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
 					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
+						  <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
 					<div class="item">
@@ -267,7 +287,7 @@ $length = mysqli_num_rows($trainings);
 					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">
 
 					<div class="carousel-caption">
-					<button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
 					</div>
 					</div>
 					<?php }?>
@@ -543,10 +563,7 @@ $length = mysqli_num_rows($trainings);
 				Notification
 			  </h4>
 			</div>
-			<div class="modal-body"> <?php
-
-				if(mysqli_num_rows($trainings) > 0){?>
-					<table style="width: 100%">
+			<div id = "modal-body" class="modal-body"><table style="width: 100%">
 					<tr>
 						<th>nome</th>
 							<th>tipo</th>
@@ -555,24 +572,6 @@ $length = mysqli_num_rows($trainings);
 							<th>serie</th>
 							<th>reps</th>
 						</tr>
-
-					<?php for ($x = 0; $x < mysqli_num_rows($trainings); $x++){
-						$resrow = mysqli_fetch_row($trainings);
-						if($resrow[0] == "scheda 10"){
-						$nome = $resrow[0];
-						$peso = $resrow[4];
-						$tipo = $resrow[1];
-						$durata = $resrow[2];
-						$nome_esercizio_attrezzo = $resrow[3];
-						$serie = $resrow[5];
-						$ripetizioni = $resrow[6];
-						?>
-
-						<tr><td><?php echo $nome; ?> </td> <td><?php echo $tipo;?></td><td><?php echo $durata;?></td><td><?php echo $nome_esercizio_attrezzo;?></td><td><?php echo $serie;?></td><td><?php echo $ripetizioni;?></td></tr>
-
-				<?php   }
-						}
-					?></table><?php } ?>
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">
