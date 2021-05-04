@@ -46,6 +46,19 @@ class DB_functions{
 		$mysql_qry = "select utente set imc = '$imc' where email = '$email'";
 		$result = mysqli_query($conn, $mysql_qry);
 	}
+	
+	public function getAllTrainingsNoDupl($conn){
+		$mysql_qry = "SELECT distinct nome FROM schede_complete";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
+	
+	public function getTrainingsPerTypeNoDupl($type, $conn){
+		$mysql_qry = "SELECT distinct nome FROM schede_complete where tipo= '$type'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
+	
 }
 
 ?>
