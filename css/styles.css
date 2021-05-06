@@ -129,6 +129,66 @@ h1, h2{
     background-color: rgb(201, 130, 42);
 }
 
+/*.css solo per allenamento.php */
+
+.dropdown-content1{
+  position: absolute;
+  background-color: #DC9F55;
+  margin-top: 0px;
+  padding: 5px; /* Modificare questo per centrare */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left: 0px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+  display: none;
+}
+
+.dropdown-content1 a{
+  display: block;
+  padding: 15px;
+}
+
+.dropdown-content1 a:hover{
+  background-color: rgb(201, 130, 42);
+}
+
+.dropdown:hover .dropdown-content1{
+  display: block;
+}
+
+.submit3{
+  background-color: #DC9F55;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+  height: 25px;
+  width: 112px;
+  font-family: "Copperplate", fantasy;
+  font-size: 70%;
+}
+
+.submit3:hover{
+    background-color: rgb(201, 130, 42);
+}
+
+.submit2{
+  background-color: rgb(168, 110, 35);
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  padding: 0;
+  height: 45px;
+  width: 122px;
+  font-family: "Copperplate", fantasy;
+  font-size: 70%;
+}
+
+.submit2:hover{
+    background-color: rgb(201, 130, 42);
+}
+/* Fine .css dedicato solo ad allenamento.php */
+
 #front1{
   background-image: url(../images/IMG.jpeg);
   background-size: cover;
