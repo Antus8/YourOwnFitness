@@ -98,6 +98,10 @@ function alert($msg) {
 			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
 		<?php endif; ?>
 		<?php if ($_SESSION['login'] == "done"): ?>
+			<div class="Login"> <!-- Percorso per la registrazione -->
+				<a href="logout.php" style="color: black; text-decoration: none" title="Clicca per il login">
+				Logout
+			</a></div>
 			<img class="Logo" width="10%" src="images/logo.png" alt="Il logo andrà qui"/>
 		<?php endif; ?>
     </header>
