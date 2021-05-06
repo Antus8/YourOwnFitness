@@ -23,6 +23,9 @@ if (isset($_POST['em'])){
 			header("Location: http://localhost/yourownfitness/login.php");
 		}
 		else{
+			// Setting del setcookie
+			setcookie("user", $email, date("d M Y H:i:s"), time()+ 86400 * 35, "/");
+
 			$resrow = mysqli_fetch_row($user);
 			$nome = $resrow[0];
 			$cognome = $resrow[1];
@@ -31,6 +34,7 @@ if (isset($_POST['em'])){
 			$_SESSION['nome'] = $nome;
 			$_SESSION['cognome'] = $cognome;
 			$_SESSION['email'] = $email;
+
 			//echo $message;
 			alert($message);
 		}
@@ -85,6 +89,11 @@ function alert($msg) {
 	 <link rel="stylesheet" type="text/css" href="css/styles.css">
  </head>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Container per il cookie -->
+<link rel="stylesheet" href="purecookie.css"/>
+<script src="purecookie.js"></script>
+
 <!-- Corpo del sito, varie sezioni + script in PHP -->
   <body>
 <!-- Testata del sito, Logo del sito -->

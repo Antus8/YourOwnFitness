@@ -116,8 +116,11 @@ function computeBMI()
 		<meta name="description" content="Your Own Fitness (YOF) - Calcolo IMC" />
 		<meta name="keywords" content="fitness" />
 <!-- File .css external, messo nella repository css/style.css -->
-	 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<!-- Script javascript per calcolo BMI -->
+ 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+		 <!-- Container per il cookie -->
+		 <link rel="stylesheet" href="purecookie.css"/>
+		 <script src="purecookie.js"></script>
 
  </head>
 
