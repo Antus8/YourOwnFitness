@@ -13,30 +13,6 @@ $schede = $db->getAllTrainings($conn);
 $length = mysqli_num_rows($trainings);
 ?>
 
-<script type="text/javascript">
-function show_scheda(scelta){
-	alert(scelta);
-	/*document.getElementById("modal-body").innerHTML += "<?php
-		for ($x = 0; $x < mysqli_num_rows($schede); $x++){
-			$resrow = mysqli_fetch_row($schede);
-			if($resrow[0] == scelta){
-						$nome = $resrow[0];
-						$peso = $resrow[4];
-						$tipo = $resrow[1];
-						$durata = $resrow[2];
-						$nome_esercizio_attrezzo = $resrow[3];
-						$serie = $resrow[5];
-						$ripetizioni = $resrow[6];
-			}?>"+
-			"<tr><td><?php echo $nome; ?> </td> <td><?php echo $tipo;?></td><td><?php echo $durata;?></td><td><?php echo $nome_esercizio_attrezzo;?></td><td><?php echo $serie;?></td><td><?php echo $ripetizioni;?></td></tr>"+
-		<?php } ?>";
-	var x = document.getElementById("Mymodal1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-}*/
-}
-</script>
-
 <!-- Utilizzo l'iframe in modo da poter visualizzare le diverse schede sulla stessa pagina "allenamento.php" -->
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Page: Allenamento -->
@@ -47,11 +23,11 @@ function show_scheda(scelta){
 		<meta name="author" content="Francesco Barletta" />
 		<meta name="description" content="Your Own Fitness (YOF) - Allenamento" />
 		<meta name="keywords" content="fitness" />
-<!-- File .css external, messo nella repository css/style.css -->
-	 <link rel="stylesheet" type="text/css" href="css/styles.css">
+		<!-- File .css external, messo nella repository css/style.css -->
+	 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
-	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+	 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	 	<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 	   <!-- Latest compiled and minified CSS -->
 	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -158,6 +134,53 @@ function show_scheda(scelta){
 		 </div>
 	</div>
 
+
+
+	<div id="Presentation">
+		<h1> I TUOI ALLENAMENTI</h1>
+		<?php for($x=0; $x<3 ;$x++){ ?>
+			<div class="panel panel-info">
+      <div class="panel-heading"><?php echo "NOME SCHEDA".$x;?></div>
+      <div class="panel-body">
+		  <a> COMPLETAMENTO SCHEDA
+		  </a>
+
+
+		  <div style=" width: 100%;
+   	    background-color: #ddd;" id="<?php echo "myProgress".$x;?>">
+   			<div style="width: 1%;
+		    height: 30px;
+		    background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"> </div>
+ 			</div>
+
+ 			<br>
+ 			<button type="button" class="btn btn-outline-primary" onclick="move()">Click Me</button>
+
+		 <script>
+		 var i = 0;
+		 function move() {
+		   if (i == 0) {
+		     i = 1;
+		     var elem = document.getElementById("<?php echo "myBar".$x;?>");
+		     var width = 1;
+		     var id = setInterval(frame, 10);
+		     function frame() {
+		       if (width >= 100) {
+		         clearInterval(id);
+		         i = 0;
+		       } else {
+		         width++;
+		         elem.style.width = width + "%";
+		       }
+		     }
+		   }
+		 }
+		 </script>
+
+	  </div>
+    </div>
+		<?php } ?>
+</div>
 		<!-- Qui andranno le varie schede di allenamento attraverso l'iframe. Utilizzare4 iframe anche per linkare i video tutorial di determinati esercizi su YouTube -->
 
 
@@ -184,17 +207,79 @@ function show_scheda(scelta){
 					<div class="item active">
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
+						<!--apertura tabella
+						<table style="width: 100%">
+							<tr>NOME ESERCIZIO</tr>
+    						<td>SERIE</td>
+    						<td>RIPETIZIONI</td>
+    						<td>DURATA</td>
+							<td>TIPO</td>
+							<td>PESO</td>
+						</tr>-->
+						<?php/*
+						$schede_complete = mysqli_fetch_row($trainings);
+					 for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+							 $resrow = mysqli_fetch_row($schede);
+							if($train[0] = $resrow[0]){
+										$nome = $resrow[0];
+										$peso = $resrow[4];
+										$tipo = $resrow[1];
+										$durata = $resrow[2];
+										$nome_esercizio_attrezzo = $resrow[3];
+										$serie = $resrow[5];
+										$ripetizioni = $resrow[6];}?>
+
+										<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+											 <td><?php echo $durata;?></td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+										 </tr><<?php}
+									  */?><!--
+								  </table> chiusura tabella-->
 					  <div class="carousel-caption">
-					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' ><a>SELEZIONA E<br></br>E REGISTRA</a> </button>
 					</div>
 					</div>
-					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $schede_complete = mysqli_fetch_row($trainings); ?>
 					<div class="item">
 					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
+					<!--apertura tabella
+											<table style="width: 100%">
+												<tr>NOME ESERCIZIO</tr>
+					    						<td>SERIE</td>
+					    						<td>RIPETIZIONI</td>
+					    						<td>DURATA</td>
+												<td>TIPO</td>
+												<td>PESO</td>
+											</tr>-->
+											<?php /*for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+												 $resrow = mysqli_fetch_row($schede);
+												if($resrow[0] = $schede_complete[0]){
+															$nome = $resrow[0];
+															$peso = $resrow[4];
+															$tipo = $resrow[1];
+															$durata = $resrow[2];
+															$nome_esercizio_attrezzo = $resrow[3];
+															$serie = $resrow[5];
+															$ripetizioni = $resrow[6];}?>
 
+															<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+																 <td><?php echo $durata;?></td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+															 </tr>
+															 <?php
+														 }*/
+														 ?><!--
+
+															</table>  chiusura tabella-->
 					<div class="carousel-caption">
-					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
 					<?php }?>
@@ -236,17 +321,79 @@ function show_scheda(scelta){
 					<div class="item active">
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
+						<!--apertura tabella
+						<table style="width: 100%">
+							<tr>NOME ESERCIZIO</tr>
+    						<td>SERIE</td>
+    						<td>RIPETIZIONI</td>
+    						<td>DURATA</td>
+							<td>TIPO</td>
+							<td>PESO</td>
+						</tr>-->
+						<?php/*
+						$schede_complete = mysqli_fetch_row($trainings);
+					 for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+							 $resrow = mysqli_fetch_row($schede);
+							if($train[0] = $resrow[0]){
+										$nome = $resrow[0];
+										$peso = $resrow[4];
+										$tipo = $resrow[1];
+										$durata = $resrow[2];
+										$nome_esercizio_attrezzo = $resrow[3];
+										$serie = $resrow[5];
+										$ripetizioni = $resrow[6];}?>
+
+										<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+											 <td><?php echo $durata;?></td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+										 </tr><<?php}
+									  */?><!--
+								  </table> chiusura tabella-->
 					  <div class="carousel-caption">
-						 <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+						 <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA </a> </button>"?>
 					</div>
 					</div>
-					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $schede_complete = mysqli_fetch_row($trainings); ?>
 					<div class="item">
 					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 					<img class="w3-image" src="./images/PESI2.png" style="width:100%">
+					<!--apertura tabella
+											<table style="width: 100%">
+												<tr>NOME ESERCIZIO</tr>
+												<td>SERIE</td>
+												<td>RIPETIZIONI</td>
+												<td>DURATA</td>
+												<td>TIPO</td>
+												<td>PESO</td>
+											</tr>-->
+											<?php /*for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+												 $resrow = mysqli_fetch_row($schede);
+												if($resrow[0] = $schede_complete[0]){
+															$nome = $resrow[0];
+															$peso = $resrow[4];
+															$tipo = $resrow[1];
+															$durata = $resrow[2];
+															$nome_esercizio_attrezzo = $resrow[3];
+															$serie = $resrow[5];
+															$ripetizioni = $resrow[6];}?>
 
+															<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+																 <td><?php echo $durata;?></td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+															 </tr>
+															 <?php
+														 }*/
+														 ?><!--
+
+															</table>  chiusura tabella-->
 					<div class="carousel-caption">
-					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
 					<?php }?>
@@ -289,17 +436,79 @@ function show_scheda(scelta){
 					<div class="item active">
 						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
+						<!--apertura tabella
+						<table style="width: 100%">
+							<tr>NOME ESERCIZIO</tr>
+    						<td>SERIE</td>
+    						<td>RIPETIZIONI</td>
+    						<td>DURATA</td>
+							<td>TIPO</td>
+							<td>PESO</td>
+						</tr>-->
+						<?php/*
+						$schede_complete = mysqli_fetch_row($trainings);
+					 for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+							 $resrow = mysqli_fetch_row($schede);
+							if($train[0] = $resrow[0]){
+										$nome = $resrow[0];
+										$peso = $resrow[4];
+										$tipo = $resrow[1];
+										$durata = $resrow[2];
+										$nome_esercizio_attrezzo = $resrow[3];
+										$serie = $resrow[5];
+										$ripetizioni = $resrow[6];}?>
+
+										<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+											 <td><?php echo $durata;?></td>
+											 <td><?php echo $serie;?></td>
+											 <td><?php echo $ripetizioni;?></td>
+										 </tr><<?php}
+									  */?><!--
+								  </table> chiusura tabella-->
 					  <div class="carousel-caption">
-						  <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+						  <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
 					<div class="item">
 					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">
+					<!--apertura tabella
+											<table style="width: 100%">
+												<tr>NOME ESERCIZIO</tr>
+												<td>SERIE</td>
+												<td>RIPETIZIONI</td>
+												<td>DURATA</td>
+												<td>TIPO</td>
+												<td>PESO</td>
+											</tr>-->
+											<?php /*for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+												 $resrow = mysqli_fetch_row($schede);
+												if($resrow[0] = $schede_complete[0]){
+															$nome = $resrow[0];
+															$peso = $resrow[4];
+															$tipo = $resrow[1];
+															$durata = $resrow[2];
+															$nome_esercizio_attrezzo = $resrow[3];
+															$serie = $resrow[5];
+															$ripetizioni = $resrow[6];}?>
 
+															<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+																 <td><?php echo $durata;?></td>
+																 <td><?php echo $serie;?></td>
+																 <td><?php echo $ripetizioni;?></td>
+															 </tr>
+															 <?php
+														 }*/
+														 ?><!--
+
+															</table>  chiusura tabella-->
 					<div class="carousel-caption">
-					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%'><a>SELEZIONA E REGISTRA </a> </button>
 					</div>
 					</div>
 					<?php }?>
@@ -333,236 +542,7 @@ function show_scheda(scelta){
 				Scheda
 			  </h4>
 			</div>
-			<div class="modal-body">
-				<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style>
-				.table {
-				border-spacing: 0;
-				empty-cells: hide;
-				}
-				.table td {
-				padding: 10px 20px;
-				text-align: center;
-				border-bottom: 1px solid #F4EEE8;
-				transition: all 0.5s linear;
-				}
-				.table td:first-child {
-				text-align: left;
-				color: #3D3511;
-				font-weight: bold;
-				}
-				.table th {
-				padding: 10px 20px;
-				color: #3D3511;
-				border-bottom: 2px solid #F4EEE8;
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-				}
-				.table td:nth-child(even) {
-				background: #F6D27E;
-				}
-				.table td:nth-child(odd) {
-				background: #D1C7BF;
-				}
-				.table th:nth-child(even)  {
-				background: #F6D27E;
-				}
-				.table th:nth-child(odd)  {
-				background: #D1C7BF;
-				}
-				.round-top {
-				border-top-left-radius: 5px;
-				}
-				.round-bottom {
-				border-bottom-left-radius: 5px;
-				}
-				tr:hover td{
-				background: #D1C7BF;
-				font-weight: bold;
-				}
-				</style>
-
-				</head><body><table class="table">
-				  <tbody><tr>
-				    <th>NOME</th>
-				    <th>ANTONIO</th>
-				    <th>DURATA</th>
-				    <th>5 WEEKS</th>
-				    </tr><tr>
-				    </tr><tr>
-				    <th>COGNOME</th>
-				        <th>CAMPOSEO</th>
-				    </tr>
-
-				<tr><th></th></tr>
-
-				  <tr>
-				    <th>DAY1</th>
-				    <th>SPLIT : PUSH </th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    </tr>
-				<tr>
-				  <th>EXERCISE</th>
-				  <th>REP GOAL</th>
-				  <th>SETS</th>
-				  <th>REC</th>
-				  <th>TECNIQUE</th>
-				  <th>NOTES</th>
-				  </tr>
-				 <tr>
-				  <td class="round-top">PANCA PIANA </td> <!--EXERCISE-->
-				  <td>20.3</td> <!--REP GOAL-->
-				  <td>30.5</td> <!--SETS-->
-				  <td>23.5</td> <!--REC-->
-				  <td>40.3</td> <!--TECNIQUE-->
-				  <td>tensione continua</td>
-				 </tr>
-				<tr>
-				  <td>CROCI</td>
-				  <td>50.2</td>
-				  <td>40.63</td>
-				  <td>45.23</td>
-				  <td>39.3</td>
-				</tr>
-				<tr>
-				  <td>PANCA INCLINATA </td>
-				  <td>25.4</td>
-				  <td>30.2</td>
-				  <td>33.3</td>
-				  <td>36.7</td>
-				</tr>
-				<tr>
-				  <td class="round-bottom">IBM</td>
-				  <td>20.4</td>
-				  <td>15.6</td>
-				  <td>22.3</td>
-				  <td>29.3</td>
-				</tr>
-				</tbody></table>
-				</body></html>
-
-
-
-
-
-				</head><body><table class="table">
-
-				<tr><th></th></tr>
-
-				  <tr>
-				    <th>DAY1</th>
-				    <th>SPLIT : PUSH </th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    </tr>
-				<tr>
-				  <th>EXERCISE</th>
-				  <th>REP GOAL</th>
-				  <th>SETS</th>
-				  <th>REC</th>
-				  <th>TECNIQUE</th>
-				  <th>NOTES</th>
-				  </tr>
-				 <tr>
-				  <td class="round-top">PANCA PIANA </td> <!--EXERCISE-->
-				  <td>4</td> <!--REP GOAL-->
-				  <td>5</td> <!--SETS-->
-				  <td>2'</td> <!--REC-->
-				  <td>77%/80%/82.5%/85% 1CM</td> <!--TECNIQUE-->
-				  <td>FERMO AL PETTO DI 1 SEC</td>
-				 </tr>
-				<tr>
-				  <td>SPINTE PAN</td>
-				  <td>50.2</td>
-				  <td>40.63</td>
-				  <td>45.23</td>
-				  <td>39.3</td>
-				</tr>
-				<tr>
-				  <td>PANCA INCLINATA </td>
-				  <td>25.4</td>
-				  <td>30.2</td>
-				  <td>33.3</td>
-				  <td>36.7</td>
-				</tr>
-				<tr>
-				  <td class="round-bottom">IBM</td>
-				  <td>20.4</td>
-				  <td>15.6</td>
-				  <td>22.3</td>
-				  <td>29.3</td>
-				</tr>
-				</tbody></table>
-				</body></html>
-
-
-				</head><body><table class="table">
-				<tr><th></th></tr>
-
-				  <tr>
-				    <th>DAY1</th>
-				    <th>SPLIT : PUSH </th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
-				    </tr>
-				<tr>
-				  <th>EXERCISE</th>
-				  <th>REP GOAL</th>
-				  <th>SETS</th>
-				  <th>REC</th>
-				  <th>TECNIQUE</th>
-				  <th>NOTES</th>
-				  </tr>
-				 <tr>
-				  <td class="round-top">PANCA PIANA </td> <!--EXERCISE-->
-				  <td>20.3</td> <!--REP GOAL-->
-				  <td>30.5</td> <!--SETS-->
-				  <td>23.5</td> <!--REC-->
-				  <td>40.3</td> <!--TECNIQUE-->
-				  <td>tensione continua</td>
-				 </tr>
-				<tr>
-				  <td>CROCI</td>
-				  <td>50.2</td>
-				  <td>40.63</td>
-				  <td>45.23</td>
-				  <td>39.3</td>
-				</tr>
-				<tr>
-				  <td>PANCA INCLINATA </td>
-				  <td>25.4</td>
-				  <td>30.2</td>
-				  <td>33.3</td>
-				  <td>36.7</td>
-				</tr>
-				<tr>
-				  <td class="round-bottom">IBM</td>
-				  <td>20.4</td>
-				  <td>15.6</td>
-				  <td>22.3</td>
-				  <td>29.3</td>
-				</tr>
-				</tbody></table>
-				</body></html>
-
-			</div>
-			<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">
-				Close
-			  </button>
-			<button type="button" class="btn btn-primary">
-				Ok
-			  </button>
-			</div>
-			</div>
-			</div>
-			</div>
+			<div class="modal-body"></div>
 
 <div class="modal fade" id="Mymodal1">
 			<div class="modal-dialog">
@@ -576,14 +556,6 @@ function show_scheda(scelta){
 			  </h4>
 			</div>
 			<div id = "modal-body" class="modal-body"><table style="width: 100%">
-					<tr>
-						<th>nome</th>
-							<th>tipo</th>
-							<th>nome esercizio </th>
-							<th>peso</th>
-							<th>serie</th>
-							<th>reps</th>
-						</tr>
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">
