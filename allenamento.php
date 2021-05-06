@@ -6,12 +6,36 @@ $db = new DB_functions();
 $type = $_POST['submit'];
 
 if ($type == "Allenamento"){
-	$trainings = $db->getAllTrainings($conn);
+	$trainings = $db->getAllTrainingsNoDupl($conn);
 }
-else $trainings = $db->getTrainingsPerType($type,$conn);
+else $trainings = $db->getTrainingsPerTypeNoDupl($type,$conn);
+$schede = $db->getAllTrainings($conn);
+$length = mysqli_num_rows($trainings);
 ?>
 
-
+<script type="text/javascript">
+function show_scheda(scelta){
+	alert(scelta);
+	/*document.getElementById("modal-body").innerHTML += "<?php
+		for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+			$resrow = mysqli_fetch_row($schede);
+			if($resrow[0] == scelta){
+						$nome = $resrow[0];
+						$peso = $resrow[4];
+						$tipo = $resrow[1];
+						$durata = $resrow[2];
+						$nome_esercizio_attrezzo = $resrow[3];
+						$serie = $resrow[5];
+						$ripetizioni = $resrow[6];
+			}?>"+
+			"<tr><td><?php echo $nome; ?> </td> <td><?php echo $tipo;?></td><td><?php echo $durata;?></td><td><?php echo $nome_esercizio_attrezzo;?></td><td><?php echo $serie;?></td><td><?php echo $ripetizioni;?></td></tr>"+
+		<?php } ?>";
+	var x = document.getElementById("Mymodal1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+}*/
+}
+</script>
 
 <!-- Utilizzo l'iframe in modo da poter visualizzare le diverse schede sulla stessa pagina "allenamento.php" -->
 <!DOCTYPE="html">
@@ -43,7 +67,7 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 		<!-- Container per il cookie -->
 		<link rel="stylesheet" href="purecookie.css"/>
 		<script src="purecookie.js"></script>
-		
+
  </head>
 
  <body>
@@ -138,47 +162,94 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 
 
 		<div id="Presentation">
-		<?php if (($_POST['submit'] == "Pesi") || ($_POST['submit'] == "Allenamento")): ?>
-			<h1><a name= "PESI"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>ALLENAMENTO CON I PESI</strong></p></a></h1>
+		<?php if (($_POST['submit'] == "Cardio") || ($_POST['submit'] == "Allenamento")): ?>
+<?php if($_POST['submit'] == "Allenamento"): $trainings = $db->getTrainingsPerTypeNoDupl("Cardio",$conn); $length = mysqli_num_rows($trainings); endif; ?>
+<h1><a name= "CARDIO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CARDIO</strong></p></a></h1>
 
 			<div>
 				<!-- Qui vanno gli allenamenti -->
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+				<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators" style="align-content: center;">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					<li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+					<?php for ($x = 1; $x < $length; $x++){?>
+					<li data-target="#carousel-example-generic2" data-slide-to="<?php echo $x;?>"></li>
+					<?php } ?>
 				  </ol>
 
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
+
 					<div class="item active">
+						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
+					  <div class="carousel-caption">
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
+					</div>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
+					<div class="item">
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
+
+					<div class="carousel-caption">
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
+					</div>
+					<?php }?>
+				  </div>
+
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				  </a>
+				  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
+				</div>
+
+		</div>
+<?php endif; ?>
+		<?php if (($_POST['submit'] == "Pesi") || ($_POST['submit'] == "Allenamento")): ?>
+			<?php if($_POST['submit'] == "Allenamento"): $trainings = $db->getTrainingsPerTypeNoDupl("Pesi",$conn); $length = mysqli_num_rows($trainings); endif; ?>
+			<h1><a name= "PESI"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>ALLENAMENTO CON I PESI</strong></p></a></h1>
+
+			<div>
+				<!-- Qui vanno gli allenamenti -->
+
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators" style="align-content: center;">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<?php for ($x = 1; $x < $length; $x++){?>
+					<li data-target="#carousel-example-generic" data-slide-to="<?php echo $x;?>"></li>
+					<?php } ?>
+				  </ol>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+
+					<div class="item active">
+						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
 						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
 					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
+						 <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
 					</div>
+					</div>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-						<img class="w3-image" src="./images/PESI3.png" style="width:100%">
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<img class="w3-image" src="./images/PESI2.png" style="width:100%">
 
-					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style=" align-items: left ; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
-
+					<div class="carousel-caption">
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
 					</div>
-					<div class="item" >
-						<img class="w3-image" src="./images/PESI1.png" style="width:100%">
-
-					  <div class="carousel-caption">
-						  <button type="button"class="btn btn-secondary" style="align-items: left ; height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a><strong>SELEZIONA E VISUALIZZA LA SCHEDA</a></strong></button>
-
-					  </div>
-
-
 					</div>
+					<?php }?>
 				  </div>
 
 				  <!-- Controls -->
@@ -192,110 +263,63 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 				  </a>
 				  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
 				</div>
+
 		</div>
 		<?php endif; ?>
 
 	<?php if (($_POST['submit'] == "Corpo Libero") || ($_POST['submit'] == "Allenamento")): ?>
-	<h1><a name= "CORPOLIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CORPO LIBERO</strong></p></a></h1>
+		<?php if($_POST['submit'] == "Allenamento"): $trainings = $db->getTrainingsPerTypeNoDupl("Corpo Libero",$conn); $length = mysqli_num_rows($trainings);endif; ?>
+	<h1><a name= "CORPO LIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CORPO LIBERO</strong></p></a></h1>
 
-	<div>
-		<!-- Qui vanno gli allenamenti -->
-		<div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-			<li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-generic1" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic1" data-slide-to="2"></li>
-		  </ol>
+			<div>
+				<!-- Qui vanno gli allenamenti -->
 
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
-			  <div class="carousel-caption">
-				  <button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a></button>
-			  </div>
-			</div>
-			<div class="item">
-				<img class="w3-image" src="./images/CORPOLIBERO1.jpg" style="width:100%">
+				<div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators" style="align-content: center;">
+					<li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
+					<?php for ($x = 1; $x < $length; $x++){?>
+					<li data-target="#carousel-example-generic1" data-slide-to="<?php echo $x;?>"></li>
+					<?php } ?>
+				  </ol>
 
-			  <div class="carousel-caption">
-				  <button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
 
-			  </div>
-			</div>
-			<div class="item">
-				<img class="w3-image" src="./images/CORPOLIBERO3.jpg" style="width:100%">
+					<div class="item active">
+						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
+					  <div class="carousel-caption">
+						  <?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
+					</div>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
+					<div class="item">
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">
 
-			  <div class="carousel-caption">
-				  <button type="button"class="btn btn-warning"style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a></button>
-			  </div>
-			</div>
-		  </div>
+					<div class="carousel-caption">
+					<?php echo "<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' data-toggle='modal' onclick = 'show_scheda(".json_encode($resrow[0]).")'><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>"?>
+					</div>
+					</div>
+					<?php }?>
+				  </div>
 
-		  <!-- Controls -->
-		  <a class="left carousel-control" href="#carousel-example-generic1" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic1" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic1" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic1" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				  </a>
+				  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
+				</div>
+
 		</div>
-</div>
 <?php endif; ?>
-<?php if (($_POST['submit'] == "Cardio") || ($_POST['submit'] == "Allenamento")): ?>
-<h1><a name= "CORPOLIBERO"><p class="w3-container" style="color:rgb(192, 109, 26);text-align:center"><strong>CARDIO</strong></p></a></h1>
-<div>
-	<!-- Qui vanno gli allenamenti -->
-	<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-		<li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
-		<li data-target="#carousel-example-generic2" data-slide-to="1"></li>
-		<li data-target="#carousel-example-generic2" data-slide-to="2"></li>
-	  </ol>
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-		<div class="item active">
-			<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
-		  <div class="carousel-caption">
-			  <button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E</a><a>VISUALIZZA LA SCHEDA</a> </button>
-		  </div>
-		</div>
-		<div class="item">
-			<img class="w3-image" src="./images/CARDIO2.jpg" style="width:100%">
-
-		  <div class="carousel-caption">
-			  <button type="button"class="btn btn-warning" style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E<br></br>VISUALIZZA LA SCHEDA</a> </button>
-
-		  </div>
-		</div>
-		<div class="item">
-			<img class="w3-image" src="./images/CARDIO3.jpg" style="width:100%">
-
-		  <div class="carousel-caption">
-			  <button type="button"class="btn btn-warning"style="height: 1%; width: 50%" data-toggle="modal" data-target="#Mymodal1"><a>SELEZIONA E</a><a>  VISUALIZZA LA SCHEDA</a> </button>
-		  </div>
-		</div>
-	  </div>
-
-	  <!-- Controls -->
-	  <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	  </a>
-	  <!-- <button type="button"class="w3-btn w3-ripple w3-orange" style="align-items:center;height: 1%; width: 100%" data-toggle="modal" data-target="#Mymodal"> </button> -->
-	</div>
-</div>
-<?php endif; ?>
 
 			<!-- .modal -->
 <div class="modal fade" id="Mymodal">
@@ -306,7 +330,7 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 				&times;
 			  </button>
 			<h4 class="modal-title">
-				Notification
+				Scheda
 			  </h4>
 			</div>
 			<div class="modal-body">
@@ -551,10 +575,7 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 				Notification
 			  </h4>
 			</div>
-			<div class="modal-body"> <?php
-
-				if(mysqli_num_rows($trainings) > 0){?>
-					<table style="width: 100%">
+			<div id = "modal-body" class="modal-body"><table style="width: 100%">
 					<tr>
 						<th>nome</th>
 							<th>tipo</th>
@@ -563,24 +584,6 @@ else $trainings = $db->getTrainingsPerType($type,$conn);
 							<th>serie</th>
 							<th>reps</th>
 						</tr>
-
-					<?php for ($x = 0; $x < mysqli_num_rows($trainings); $x++){
-						$resrow = mysqli_fetch_row($trainings);
-						if($resrow[0] == "scheda 10"){
-						$nome = $resrow[0];
-						$peso = $resrow[4];
-						$tipo = $resrow[1];
-						$durata = $resrow[2];
-						$nome_esercizio_attrezzo = $resrow[3];
-						$serie = $resrow[5];
-						$ripetizioni = $resrow[6];
-						?>
-
-						<tr><td><?php echo $nome; ?> </td> <td><?php echo $tipo;?></td><td><?php echo $durata;?></td><td><?php echo $nome_esercizio_attrezzo;?></td><td><?php echo $serie;?></td><td><?php echo $ripetizioni;?></td></tr>
-
-				<?php   }
-						}
-					?></table><?php } ?>
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">
