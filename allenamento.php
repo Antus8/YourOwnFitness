@@ -209,17 +209,30 @@ $length = mysqli_num_rows($trainings);
 						
 						<table style="width: 100%">
 							<tr><td>ESERCIZIO</td>
+							<td>PESO</td>
     						<td>SERIE</td>
     						<td>RIPETIZIONI</td>
     						<td>DURATA</td>
-							<td>PESO</td>
 							<td>WEEK</td>
 						</tr>
 						<?php
-						echo "Calling with: ".$train[0];
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
-							
+						for ($x = 0; $x < mysqli_num_rows($schede); $x++){
+							$resrow = mysqli_fetch_row($schede);
+
+							$esercizio = $resrow[3];
+							$peso = $resrow[4];
+							$serie = $resrow[5];
+							$ripetizioni = $resrow[6];
+							$durata = $resrow[2];
 						?>
+						<tr>
+						<td><?php echo $esercizio;?></td>
+						<td><?php echo $peso;?></td>
+						<td><?php echo $serie;?></td>
+						<td><?php echo $ripetizioni;?></td>
+						<td><?php echo $durata;?></td>
+						</tr><?php }?>
 						</table>
 						
 					  <div class="carousel-caption">
