@@ -9,7 +9,6 @@ if ($type == "Allenamento"){
 	$trainings = $db->getAllTrainingsNoDupl($conn);
 }
 else $trainings = $db->getTrainingsPerTypeNoDupl($type,$conn);
-$schede = $db->getAllTrainings($conn);
 $length = mysqli_num_rows($trainings);
 ?>
 
@@ -205,46 +204,31 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
-						<!--apertura tabella
+						
 						<table style="width: 100%">
-							<tr>NOME ESERCIZIO</tr>
+							<tr><td>ESERCIZIO</td>
     						<td>SERIE</td>
     						<td>RIPETIZIONI</td>
     						<td>DURATA</td>
-							<td>TIPO</td>
 							<td>PESO</td>
-						</tr>-->
-						<?php/*
-						$schede_complete = mysqli_fetch_row($trainings);
-					 for ($x = 0; $x < mysqli_num_rows($schede); $x++){
-							 $resrow = mysqli_fetch_row($schede);
-							if($train[0] = $resrow[0]){
-										$nome = $resrow[0];
-										$peso = $resrow[4];
-										$tipo = $resrow[1];
-										$durata = $resrow[2];
-										$nome_esercizio_attrezzo = $resrow[3];
-										$serie = $resrow[5];
-										$ripetizioni = $resrow[6];}?>
-
-										<tr><td><?php echo $nome_esercizio_attrezzo; ?> </td>
-											 <td><?php echo $serie;?></td>
-											 <td><?php echo $ripetizioni;?></td>
-											 <td><?php echo $durata;?></td>
-											 <td><?php echo $serie;?></td>
-											 <td><?php echo $ripetizioni;?></td>
-										 </tr><<?php}
-									  */?><!--
-								  </table> chiusura tabella-->
+							<td>WEEK</td>
+						</tr>
+						<?php
+						echo "Calling with: ".$train[0];
+						$schede = $db->getAllTrainingsByName($train[0],$conn);
+							
+						?>
+						</table>
+						
 					  <div class="carousel-caption">
 					<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' ><a>SELEZIONA E<br></br>E REGISTRA</a> </button>
 					</div>
 					</div>
-					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $schede_complete = mysqli_fetch_row($trainings); ?>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
 					<!--apertura tabella
 											<table style="width: 100%">
@@ -319,7 +303,7 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
 						<!--apertura tabella
 						<table style="width: 100%">
@@ -356,9 +340,9 @@ $length = mysqli_num_rows($trainings);
 						 <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA </a> </button>"?>
 					</div>
 					</div>
-					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $schede_complete = mysqli_fetch_row($trainings); ?>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 					<img class="w3-image" src="./images/PESI2.png" style="width:100%">
 					<!--apertura tabella
 											<table style="width: 100%">
@@ -434,7 +418,7 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<h1 id = "nome"><?php $resrow = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
 						<!--apertura tabella
 						<table style="width: 100%">
@@ -471,9 +455,9 @@ $length = mysqli_num_rows($trainings);
 						  <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
-					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $resrow = mysqli_fetch_row($trainings); ?>
+					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($resrow[0]); ?></h1>
+					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
 					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">
 					<!--apertura tabella
 											<table style="width: 100%">

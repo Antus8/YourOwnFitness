@@ -58,6 +58,12 @@ class DB_functions{
 		$result = mysqli_query($conn, $mysql_qry);
 		return $result;
 	}
+
+	public function getAllTrainingsByName($name, $conn){
+		$mysql_qry = "SELECT * FROM schede_complete WHERE nome = '$name'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
 	
 }
 
