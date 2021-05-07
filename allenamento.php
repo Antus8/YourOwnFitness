@@ -134,19 +134,19 @@ $length = mysqli_num_rows($trainings);
 	</div>
 
 
-
+	<?php if(isset($_SESSION['email'])): $my_trainings = $db->getAllTrainingsByUser($_SESSION['email'],$conn) ?>
 	<div id="Presentation">
 		<h1> I TUOI ALLENAMENTI</h1>
-		<?php for($x=0; $x<3 ;$x++){ ?>
+		<?php for($x=0; $x<mysqli_num_rows($my_trainings) ;$x++){ $training = mysqli_fetch_row($my_trainings);?>
 			<div class="panel panel-info">
-      <div class="panel-heading"><?php echo "NOME SCHEDA".$x;?></div>
-      <div class="panel-body">
-		  <a> COMPLETAMENTO SCHEDA
-		  </a>
+      		<div class="panel-heading"><?php echo "NOME SCHEDA: ".$training[1];?></div>
+      		<div class="panel-body">
+		  	<a> COMPLETAMENTO SCHEDA
+			 </a>
 
 
 		  <div style=" width: 100%;
-   	    background-color: #ddd;" id="<?php echo "myProgress".$x;?>">
+   	    background-color: #ddd;" id="<?php echo "myProgress".$training[3]."%";?>">
    			<div style="width: 1%;
 		    height: 30px;
 		    background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"> </div>
@@ -180,6 +180,7 @@ $length = mysqli_num_rows($trainings);
     </div>
 		<?php } ?>
 </div>
+<?php endif; ?>
 		<!-- Qui andranno le varie schede di allenamento attraverso l'iframe. Utilizzare4 iframe anche per linkare i video tutorial di determinati esercizi su YouTube -->
 
 

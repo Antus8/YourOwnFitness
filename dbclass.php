@@ -64,6 +64,11 @@ class DB_functions{
 		$result = mysqli_query($conn, $mysql_qry);
 		return $result;
 	}
+	public function getAllTrainingsByUser($email, $conn){
+		$mysql_qry = "SELECT * FROM utenti_allenamenti WHERE email_utente = '$email'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
 	
 }
 
