@@ -36,7 +36,7 @@ $length = mysqli_num_rows($trainings);
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	   <!-- Latest compiled and minified JavaScript -->
 	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 		<!-- Container per il cookie -->
@@ -134,53 +134,34 @@ $length = mysqli_num_rows($trainings);
 	</div>
 
 
-	<?php if(isset($_SESSION['email'])): $my_trainings = $db->getAllTrainingsByUser($_SESSION['email'],$conn) ?>
+	<?php if(isset($_SESSION['email'])): $my_trainings = $db->getAllTrainingsByUser($_SESSION['email'],$conn);
+		if(mysqli_num_rows($my_trainings)>0):?>
 	<div id="Presentation">
 		<h1> I TUOI ALLENAMENTI</h1>
-		<?php for($x=0; $x<mysqli_num_rows($my_trainings) ;$x++){ $training = mysqli_fetch_row($my_trainings);?>
+		<?php 
+		for($x=0; $x<mysqli_num_rows($my_trainings) ;$x++){ $training = mysqli_fetch_row($my_trainings);?>
 			<div class="panel panel-info">
       		<div class="panel-heading"><?php echo "NOME SCHEDA: ".$training[1];?></div>
       		<div class="panel-body">
 		  	<a> COMPLETAMENTO SCHEDA
 			 </a>
-
-
 		  <div style=" width: 100%;
    	    background-color: #ddd;" id="<?php echo "myProgress".$training[3]."%";?>">
    			<div style="width: 1%;
 		    height: 30px;
-		    background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"> </div>
+		    background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"></div>
  			</div>
-
+			<form id='my_training<?php echo $x;?>' method='post'>
  			<br>
- 			<button type="button" class="btn btn-outline-primary" onclick="move()">Click Me</button>
-
-		 <script>
-		 var i = 0;
-		 function move() {
-		   if (i == 0) {
-		     i = 1;
-		     var elem = document.getElementById("<?php echo "myBar".$x;?>");
-		     var width = 1;
-		     var id = setInterval(frame, 10);
-		     function frame() {
-		       if (width >= 100) {
-		         clearInterval(id);
-		         i = 0;
-		       } else {
-		         width++;
-		         elem.style.width = width + "%";
-		       }
-		     }
-		   }
-		 }
-		 </script>
-
+			<input type='hidden' name='email' value = "<?php echo $_SESSION['email'];?>">
+			<input type='hidden' name='allenamento' value = "<?php echo $training[1];?>">
+ 			<button type="button" class="btn btn-outline-primary" id = 'button_progress<?php echo $x;?>' onclick="move()">Update Progress</button>
+			</form>
 	  </div>
     </div>
 		<?php } ?>
 </div>
-<?php endif; ?>
+<?php endif; endif; ?>
 		<!-- Qui andranno le varie schede di allenamento attraverso l'iframe. Utilizzare4 iframe anche per linkare i video tutorial di determinati esercizi su YouTube -->
 
 
@@ -580,7 +561,7 @@ scheda model presa dal database
 			</div>
 
 	</footer>
-
+<?php include("ajax.js"); ?>
 </body>
 
 </html>

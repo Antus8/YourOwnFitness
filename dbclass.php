@@ -70,6 +70,16 @@ class DB_functions{
 		return $result;
 	}
 	
+	public function updateProgress($email, $allenamento, $incremento, $conn){
+		$mysql_qry = "update utenti_allenamenti set progresso = progresso + '$incremento' where email_utente = '$email' and nome_allenamento = '$allenamento'";
+		$result = mysqli_query($conn, $mysql_qry);
+	}
+	
+	public function getTotalNumberOfExcercises($allenamento, $conn){
+		$mysql_qry = "select count(nome) from schede_complete where nome = '$allenamento'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
 }
 
 ?>
