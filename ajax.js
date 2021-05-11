@@ -1,8 +1,8 @@
 <script type="text/javascript">
 
-var i = 0;
+			var i = 0;
 		 function move(identifier) {
-		   if (i == 0) {
+		   if (i == 0){
 		     i = 1;
 		     var elem = document.getElementById(identifier);
 		     var width = 1;
@@ -16,10 +16,10 @@ var i = 0;
 		         elem.style.width = width + "%";
 		       }
 		     }
-		   }
 		 }
-	
-	
+	 }
+
+
 	$(document).ready(function () {
 		$('#button_progress0').click(function (e) {
             e.preventDefault();
@@ -32,9 +32,9 @@ var i = 0;
 				move(myBar0);
 			}
 			})
-		})		
+		})
     });
-	
+
 	$(document).ready(function () {
 		$('#button_progress1').click(function (e) {
             e.preventDefault();
@@ -44,10 +44,10 @@ var i = 0;
 			data: $('#my_training1').serialize(),
 			dataType: "text",
 			success: function(){
-				move();
+				move(mybar1);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress2').click(function (e) {
@@ -58,9 +58,10 @@ var i = 0;
 			data: $('#my_training2').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar2);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress3').click(function (e) {
@@ -71,9 +72,10 @@ var i = 0;
 			data: $('#my_training3').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar3);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress4').click(function (e) {
@@ -84,9 +86,10 @@ var i = 0;
 			data: $('#my_training4').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar4);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress5').click(function (e) {
@@ -97,9 +100,10 @@ var i = 0;
 			data: $('#my_training5').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar5);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress6').click(function (e) {
@@ -110,11 +114,12 @@ var i = 0;
 			data: $('#my_training6').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar6);
 			}
 			})
-		})		
+		})
     });
-	
+
 	$(document).ready(function () {
 		$('#button_progress7').click(function (e) {
             e.preventDefault();
@@ -124,9 +129,10 @@ var i = 0;
 			data: $('#my_training7').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar7);
 			}
 			})
-		})		
+		})
     });
 	$(document).ready(function () {
 		$('#button_progress8').click(function (e) {
@@ -137,11 +143,12 @@ var i = 0;
 			data: $('#my_training8').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar8);
 			}
 			})
-		})		
+		})
     });
-	
+
 	$(document).ready(function () {
 		$('#button_progress9').click(function (e) {
             e.preventDefault();
@@ -151,11 +158,12 @@ var i = 0;
 			data: $('#my_training9').serialize(),
 			dataType: "text",
 			success: function(result){
+				move(mybar9);
 			}
 			})
-		})		
+		})
     });
-	
+
 	$(document).ready(function () {
 		$('#button_progress10').click(function (e) {
             e.preventDefault();
@@ -165,9 +173,11 @@ var i = 0;
 			data: $('#my_training10').serialize(),
 			dataType: "text",
 			success: function(result){
-			}
+				move(mybar10);
+
+}
 			})
-		})		
+		})
     });
-	
+
 </script>

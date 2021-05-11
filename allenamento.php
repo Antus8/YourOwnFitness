@@ -44,7 +44,6 @@ $length = mysqli_num_rows($trainings);
 		<script src="purecookie.js"></script>
 
  </head>
-
  <body>
 <!-- Testata del sito, Logo del sito -->
 <header>
@@ -138,7 +137,7 @@ $length = mysqli_num_rows($trainings);
 		if(mysqli_num_rows($my_trainings)>0):?>
 	<div id="Presentation">
 		<h1> I TUOI ALLENAMENTI</h1>
-		<?php 
+		<?php
 		for($x=0; $x<mysqli_num_rows($my_trainings) ;$x++){ $training = mysqli_fetch_row($my_trainings);?>
 			<div class="panel panel-info">
       		<div class="panel-heading"><?php echo "NOME SCHEDA: ".$training[1];?></div>
@@ -186,17 +185,22 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
+					<div class='container' style='width:500px; height:30% '>
 						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+					</div>
 						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
-						
-						<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
-						</tr>
+						<table class="table table-hover table-dark">
+							<thead>
+								<tr>
+								<th scope="col" class="bg-warning">ESERCIZIO</th>
+								<th scope="col" class="bg-warning">PESO</th>
+	    						<th scope="col"class="bg-warning">SERIE</th>
+	    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+	    						<th scope="col"class="bg-warning">DURATA</th>
+								<th scope="col"class="bg-warning">WEEK</th>
+							</tr>
+						</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x = 0; $x < mysqli_num_rows($schede); $x++){
@@ -208,31 +212,40 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
-						
+
 					  <div class="carousel-caption">
-					<button type='button' class='btn btn-warning' style='height: 1%; width: 50%' ><a>SELEZIONA E<br></br>E REGISTRA</a> </button>
+
 					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+					<div class='container' style='width:500px; height:30% '>
+						<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+					</div>
 					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
-					<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
+
+					<table class="table table-hover table-dark">
+						<thead>
+							<tr>
+							<th scope="col" class="bg-warning">ESERCIZIO</th>
+							<th scope="col" class="bg-warning">PESO</th>
+    						<th scope="col"class="bg-warning">SERIE</th>
+    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+    						<th scope="col"class="bg-warning">DURATA</th>
+							<th scope="col"class="bg-warning">WEEK</th>
 						</tr>
+					</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x1 = 0; $x1 < mysqli_num_rows($schede); $x1++){
@@ -244,16 +257,17 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
 					<div class="carousel-caption">
-					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
 					<?php }?>
@@ -293,16 +307,23 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-						<img class="w3-image" src="./images/PESI2.png" style="width:100%" >
-						<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
-						</tr>
+							<div class='container' style='width:500px; height:30% '>
+								<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+								<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+						</div>
+
+						<img class="w3-image" src="./images/PESI.jpg" style="width:100%" >
+						<table class="table table-hover table-dark">
+							<thead>
+								<tr>
+								<th scope="col" class="bg-warning">ESERCIZIO</th>
+								<th scope="col" class="bg-warning">PESO</th>
+	    						<th scope="col"class="bg-warning">SERIE</th>
+	    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+	    						<th scope="col"class="bg-warning">DURATA</th>
+								<th scope="col"class="bg-warning">WEEK</th>
+							</tr>
+						</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x = 0; $x < mysqli_num_rows($schede); $x++){
@@ -314,30 +335,37 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
 					  <div class="carousel-caption">
-						 <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA </a> </button>"?>
 					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-					<img class="w3-image" src="./images/PESI2.png" style="width:100%">
-					<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
+						<div class='container' style='width:500px; height:30% '>
+							<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+					</div>
+					<img class="w3-image" src="./images/PESI.jpg" style="width:100%">
+					<table class="table table-hover table-dark">
+						<thead>
+							<tr>
+							<th scope="col" class="bg-warning">ESERCIZIO</th>
+							<th scope="col" class="bg-warning">PESO</th>
+    						<th scope="col"class="bg-warning">SERIE</th>
+    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+    						<th scope="col"class="bg-warning">DURATA</th>
+							<th scope="col"class="bg-warning">WEEK</th>
 						</tr>
+					</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x1 = 0; $x1 < mysqli_num_rows($schede); $x1++){
@@ -349,17 +377,18 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
-				 
+
 				  <div class="carousel-caption">
-					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
 					</div>
 					</div>
 					<?php }?>
@@ -400,16 +429,23 @@ $length = mysqli_num_rows($trainings);
 				  <div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+						<div class='container' style='width:500px; height:30% '>
+							<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+					</div>
 						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
 						<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
-						</tr>
+							<table class="table table-hover table-dark">
+								<thead>
+									<tr>
+									<th scope="col" class="bg-warning">ESERCIZIO</th>
+									<th scope="col" class="bg-warning">PESO</th>
+		    						<th scope="col"class="bg-warning">SERIE</th>
+		    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+		    						<th scope="col"class="bg-warning">DURATA</th>
+									<th scope="col"class="bg-warning">WEEK</th>
+								</tr>
+							</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x = 0; $x < mysqli_num_rows($schede); $x++){
@@ -421,30 +457,37 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
-					  <div class="carousel-caption">
-						  <button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%' ><a>SELEZIONA E REGISTRA</a> </button>
-					</div>
 					</div>
 					<?php for ($x = 1; $x < mysqli_num_rows($trainings); $x++){ $train = mysqli_fetch_row($trainings); ?>
 					<div class="item">
-					<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+						<div class='container' style='width:500px; height:30% '>
+							<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+					</div>
+
 					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">
 					<table style="width: 100%">
-							<tr><td>ESERCIZIO</td>
-							<td>PESO</td>
-    						<td>SERIE</td>
-    						<td>RIPETIZIONI</td>
-    						<td>DURATA</td>
-							<td>WEEK</td>
-						</tr>
+						<table class="table table-hover table-dark">
+							<thead>
+								<tr>
+								<th scope="col" class="bg-warning">ESERCIZIO</th>
+								<th scope="col" class="bg-warning">PESO</th>
+	    						<th scope="col"class="bg-warning">SERIE</th>
+	    						<th scope="col"class="bg-warning">RIPETIZIONI</th>
+	    						<th scope="col"class="bg-warning">DURATA</th>
+								<th scope="col"class="bg-warning">WEEK</th>
+							</tr>
+						</thead>
 						<?php
 						$schede = $db->getAllTrainingsByName($train[0],$conn);
 						for ($x1 = 0; $x1 < mysqli_num_rows($schede); $x1++){
@@ -456,16 +499,17 @@ $length = mysqli_num_rows($trainings);
 							$ripetizioni = $resrow[6];
 							$durata = $resrow[2];
 						?>
+						<tbody>
 						<tr>
-						<td><?php echo $esercizio;?></td>
-						<td><?php echo $peso;?></td>
-						<td><?php echo $serie;?></td>
-						<td><?php echo $ripetizioni;?></td>
-						<td><?php echo $durata;?></td>
+						<th scope = "row"class="bg-warning"><?php echo $esercizio;?></th>
+						<td class="bg-warning"><?php echo $peso;?></td>
+						<td class="bg-warning"><?php echo $serie;?></td>
+						<td class="bg-warning"><?php echo $ripetizioni;?></td>
+						<td class="bg-warning"><?php echo $durata;?></td>
 						</tr><?php }?>
+						</tbody>
 						</table>
 					<div class="carousel-caption">
-					<button type="button" class="btn btn-outline-primary" style='height: 1%; width: 50%'><a>SELEZIONA E REGISTRA </a> </button>
 					</div>
 					</div>
 					<?php }?>

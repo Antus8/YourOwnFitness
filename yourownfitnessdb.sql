@@ -486,9 +486,13 @@ CREATE TABLE `utenti_allenamenti` (
   `email_utente` varchar(30) NOT NULL,
   `nome_allenamento` varchar(20) NOT NULL,
   `g_s` int(1) DEFAULT NULL,
-  `progresso` int(1) NOT NULL DEFAULT 0
+  `progresso` int(1) NOT NULL DEFAULT 0,
+  `data_start` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `utenti_allenamenti` (`email_utente`, `allenamento`, `g_s`, `progresso`, `data_start`) VALUES
+('antoniocamposeo99@gmail.com', 'dimagrimento 1',5,0,2021-05-07),
+('antoniocamposeo99@gmail.com', 'potenziamento 1',5,0,2021-05-07);
 -- --------------------------------------------------------
 
 --
@@ -591,7 +595,7 @@ ALTER TABLE `utente`
 -- Indici per le tabelle `utenti_allenamenti`
 --
 ALTER TABLE `utenti_allenamenti`
-  ADD PRIMARY KEY (`email_utente`,`nome_allenamento`);
+  ADD PRIMARY KEY (`email_utente`,`nome_allenamento`,`data_start`);
 
 --
 -- Indici per le tabelle `utenti_diete`
