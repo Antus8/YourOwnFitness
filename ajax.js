@@ -1,25 +1,5 @@
 <script type="text/javascript">
 
-			var i = 0;
-		 function move(identifier) {
-		   if (i == 0){
-		     i = 1;
-		     var elem = document.getElementById(identifier);
-		     var width = 1;
-		     var id = setInterval(frame, 10);
-		     function frame() {
-		       if (width >= 100) {
-		         clearInterval(id);
-		         i = 0;
-		       } else {
-		         width++;
-		         elem.style.width = width + "%";
-		       }
-		     }
-		 }
-	 }
-
-
 	$(document).ready(function () {
 		$('#button_progress0').click(function (e) {
             e.preventDefault();
@@ -175,9 +155,263 @@
 			success: function(result){
 				move(mybar10);
 
-}
+			}
 			})
 		})
     });
 
+$(document).ready(function () {
+		$('#button_dimagrimento1').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_dimagrimento1').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_dimagrimento2').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_dimagrimento2').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+	$('#button_scheda1').click(function (e) {
+		$.ajax({
+			method: "post",
+			url: "store_training.php",
+			data: $('#my_training_scheda1').serialize(),
+			dataType: "text",
+			success: function(result){
+				alert(result);
+
+			}
+			}) 
+	})
+});
+
+$(document).ready(function () {
+	$('#button_scheda2').click(function (e) {
+		$.ajax({
+			method: "post",
+			url: "store_training.php",
+			data: $('#my_training_scheda2').serialize(),
+			dataType: "text",
+			success: function(result){
+				alert(result);
+
+			}
+			}) 
+	})
+});
+
+$(document).ready(function () {
+		$('#button_scheda3').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda3').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda4').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda4').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda5').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda3').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+
+$(document).ready(function () {
+		$('#button_scheda6').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda6').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda7').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda7').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda8').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda8').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda9').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda9').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_scheda10').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_scheda10').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_potenziamento1').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_potenziamento1').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_potenziamento2').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_potenziamento2').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_forma1').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_forma1').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+	$(document).ready(function () {
+		$('#button_forma2').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_forma2').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#button_legpocalypse').click(function (e) {
+			$.ajax({
+				method: "post",
+				url: "store_training.php",
+				data: $('#my_training_legpocalypse').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+	
+				}
+				}) 
+		})
+    });
 </script>

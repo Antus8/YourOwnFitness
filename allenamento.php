@@ -187,7 +187,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item active">
 					<div class='container' style='width:500px; height:30% '>
 						<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+						<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+						<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+						<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+						</form>
 					</div>
 						<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%" >
 						<table class="table table-hover table-dark">
@@ -231,7 +235,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item">
 					<div class='container' style='width:500px; height:30% '>
 						<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+						<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+						<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+						<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+						<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+						</form>
 					</div>
 					<img class="w3-image" src="./images/CARDIO1.jpg" style="width:100%">
 
@@ -309,7 +317,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item active">
 							<div class='container' style='width:500px; height:30% '>
 								<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-								<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+								<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+								<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+								<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+								<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+								</form>
 						</div>
 
 						<img class="w3-image" src="./images/PESI.jpg" style="width:100%" >
@@ -352,7 +364,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item">
 						<div class='container' style='width:500px; height:30% '>
 							<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+							<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+							<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+							<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+							</form>
 					</div>
 					<img class="w3-image" src="./images/PESI.jpg" style="width:100%">
 					<table class="table table-hover table-dark">
@@ -431,7 +447,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item active">
 						<div class='container' style='width:500px; height:30% '>
 							<h1 id = "nome"><?php $train = mysqli_fetch_row($trainings); echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+							<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+							<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+							<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+							</form>
 					</div>
 						<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%" >
 						<table style="width: 100%">
@@ -472,7 +492,11 @@ $length = mysqli_num_rows($trainings);
 					<div class="item">
 						<div class='container' style='width:500px; height:30% '>
 							<h1 id = "nome"><?php echo "Allenamento: ". strtoupper($train[0]); ?></h1>
-							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' >SELEZIONA E REGISTRA</button>
+							<form id='my_training_<?php echo str_replace(' ', '', $train[0]);?>' method='post'>
+							<input type='hidden' name='email' value = "<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];}?>">
+							<input type='hidden' name='allenamento' value = "<?php echo $train[0];?>">
+							<button type="button"class="btn btn-primary"  style='height: 60px; width: 50%; left: 200px' id ='button_<?php echo str_replace(' ', '', $train[0]);?>'>SELEZIONA E REGISTRA</button>
+							</form>
 					</div>
 
 					<img class="w3-image" src="./images/CORPOLIBERO2.jpg" style="width:100%">

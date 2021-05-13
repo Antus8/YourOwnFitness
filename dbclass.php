@@ -80,6 +80,18 @@ class DB_functions{
 		$result = mysqli_query($conn, $mysql_qry);
 		return $result;
 	}
+
+	public function getTrainingsPerWeek($email, $conn){
+		$mysql_qry = "select freq_all from utente where email = '$email'";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
+
+	public function storeUserTrainings($email, $allenamento, $trainings_per_week, $date, $conn){
+		$mysql_qry = "insert into utenti_allenamenti values ('$email','$allenamento','$trainings_per_week', 0, '$date')";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
 }
 
 ?>
