@@ -146,9 +146,9 @@ $length = mysqli_num_rows($trainings);
 			 </a>
 		  <div style=" width: 100%;
    	    background-color: #ddd;" id="<?php echo "myProgress".$training[3]."%";?>">
-   			<div style="width: 1%;
-		    height: 30px;
-		    background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"></div>
+		<div style="width: <?php echo $training[3]?>%;
+		height: 30px;
+		background-color: #04AA6D;" id="<?php echo "myBar".$x;?>"></div>
  			</div>
 			<form id='my_training<?php echo $x;?>' method='post'>
  			<br>
