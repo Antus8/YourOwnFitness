@@ -11,7 +11,7 @@ $db = new DB_functions();
 <html lang="it"> <!-- HTML Language, lo si mette per default -->
 	<head>
 		<!-- Intestazione, dichiariamo i meta dati (N.B. keywords non necessari) -->
-    <title> Your Own Fitness - Calcolo IMC </title>
+    <title> Diete </title>
 		<meta name="author" content="Francesco Barletta" />
 		<meta name="description" content="Your Own Fitness (YOF) - Diete" />
 		<meta name="keywords" content="fitness" />
@@ -25,7 +25,7 @@ $db = new DB_functions();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.min.css" integrity="sha512-ztsAq/T5Mif7onFaDEa5wsi2yyDn5ygdVwSSQ4iok5BPJQGYz1CoXWZSA7OgwGWrxrSrbF0K85PD5uLpimu4eQ==" crossorigin="anonymous" />
 
 <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <!-- fine link e script Pierluigi -->
@@ -118,8 +118,8 @@ $db = new DB_functions();
 </nav>
 
 	<div id="content">
-		 <div id="front1">
-			 <h1 style="margin-left: 14px; color: rgb(192, 109, 26)">
+		 <div class="front1">
+			 <h1>
 				 Your Own Fitness, la scelta <br>giusta per il tuo fisico!
 			 </h1>
 		 </div>
