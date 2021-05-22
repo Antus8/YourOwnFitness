@@ -1,10 +1,10 @@
-<?php
+<!-- <?php 
 session_start();
 require "conn.php";
 require "dbclass.php";
 
 $db = new DB_functions();
-?>
+?>-->
 
 <!DOCTYPE="html">
 <!-- Your Own Fitness - Page: Diete -->
@@ -16,7 +16,7 @@ $db = new DB_functions();
 		<meta name="description" content="Your Own Fitness (YOF) - Diete" />
 		<meta name="keywords" content="fitness" />
 <!-- File .css external, messo nella repository css/style.css -->
-	 <link rel="stylesheet" type="text/css" href="css/styles.css">
+	 <link rel="stylesheet" type="text/css" href="css/DieteStyleCSS.css">
 
 
 <!-- link e script Pierluigi -->
