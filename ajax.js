@@ -414,4 +414,96 @@ $(document).ready(function () {
 				}) 
 		})
     });
+
+
+$(document).ready(function () {
+		$('#Bdieta1').click(function (e) {
+			e.preventDefault();
+			alert("CIAO");
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta1').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#Bdieta2').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta2').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#Bdieta3').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta3').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#Bdieta4').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta4').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#Bdieta5').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta5').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
+
+$(document).ready(function () {
+		$('#Bdieta6').click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				method: "post",
+				url: "store_diete.php",
+				data: $('#formDieta6').serialize(),
+				dataType: "text",
+				success: function(result){
+					alert(result);
+				}
+				}) 
+		})
+    });
 </script>

@@ -549,7 +549,11 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta1">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta1">
+				<input type="hidden" name="dieta" value="dieta_punti"/>
+				<input type="submit" value="Aggiungi" id='Bdieta1'>Aggiungi</input>
+			</form>
+			
 		</div>
 </div>
 
@@ -779,7 +783,11 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta2">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta2">
+				<input type="hidden" name="dieta" value="dieta_col"/>
+				<input type="submit" value="Aggiungi" id="Bdieta2"></input>
+			</form>
+			
 		</div>
 </div>
 
@@ -1018,7 +1026,11 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta3">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta3">
+				<input type="hidden" name="dieta" value="dieta_osteo"/>
+				<input type="submit" value="Aggiungi" id="Bdieta3"></input>
+			</form>
+			
 		</div>
 </div>
 
@@ -1244,7 +1256,11 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta4">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta4">
+				<input type="hidden" name="dieta" value="dieta_cheto"/>
+				<input type="submit" value="Aggiungi" id="Bdieta4"></input>
+			</form>
+			
 		</div>
 </div>
 
@@ -1451,7 +1467,10 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta5">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta5">
+				<input type="hidden" name="dieta" value="dieta_vegan"/>
+				<input type="submit" value="Aggiungi" id="Bdieta5"></input>
+			</form>			
 		</div>
 </div>
 
@@ -1681,7 +1700,10 @@ $db = new DB_functions();
 
 		<div class="button">
 			<!-- button -->
-			<button id="Bdieta6">Aggiungi</button>
+			<form action="#" metod="post" id="formDieta6">
+				<input type="hidden" name="dieta" value="dieta_vege"/>
+				<input type="submit" value="Aggiungi" id="Bdieta6"></input>
+			</form>
 		</div>
 </div>
 
@@ -1744,7 +1766,7 @@ $db = new DB_functions();
 
 
 
-
+<?php include("ajax.js"); ?>
 
 </body>
 

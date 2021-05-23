@@ -92,6 +92,12 @@ class DB_functions{
 		$result = mysqli_query($conn, $mysql_qry);
 		return $result;
 	}
+
+	public function storeUserDiet($email, $dieta, $data_inizio, $conn){
+		$mysql_qry = "insert into utenti_diete values ('$email','$dieta','$data_inizio', '$data_inizio')";
+		$result = mysqli_query($conn, $mysql_qry);
+		return $result;
+	}
 }
 
 ?>
