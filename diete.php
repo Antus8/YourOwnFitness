@@ -222,7 +222,7 @@ $db = new DB_functions();
 
 
 		<!-- bg cover -->
-		<div class="bg-cover mt-3">
+		<div class="bg-cover mt-3" style="background: rgba(0, 0, 0, 0.349); background: url(images/i2mod.jpg) no-repeat center center; background-size: cover;"> 
     	<div class="bg-cover__title reveal">
       	<h3 class="big-text tw">Macronutrienti</h3>
     	</div>
