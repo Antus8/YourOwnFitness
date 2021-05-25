@@ -194,14 +194,14 @@ function alert($msg) {
 			<div id="Presentation">
 
 				<h1 style="text-transform: uppercase">Chi siamo?</h1>
-				<p>&#169; YourOwnFitness è un progetto nato nel Marzo del 2021 grazie al lavoro di 4 studenti frequentanti
+				<p>&#169; YourOwnFitness è un progetto nato nel Marzo del 2021 grazie al lavoro di 5 studenti frequentanti
 									"Ingegneria Informatica e dell'Automazione" presso il <a href="http://www.poliba.it/" target="_blank" title="Link per www.poliba.it" style="color: #975806; text-decoration:none"><b>Politecnico di Bari</b></a>:</p>
 				<ul>
 					<li><b>BARLETTA</b> Francesco, Project Manager e Sviluppatore Web;</li><hr>
 					<li><b>LONGO</b> Antonello, Sviluppatore Web;</li><hr>
 					<li><b>LONGO</b> Pierluigi, Animation Designer;</li><hr>
 					<li><b>CAMPOSEO</b> Antonio, Graphic Designer;</li><hr>
-					<li><b>DI PALMA</b> Antonio, responsabile della Documentazione;</li>
+					<li><b>DI PALMA</b> Antonio, Responsabile legale;</li>
 				</ul>
 
 				<h1 style="text-transform: uppercase">Perchè Your Own Fitness?</h1>
