@@ -201,7 +201,7 @@ function alert($msg) {
 					<li><b>LONGO</b> Antonello, Sviluppatore Web;</li><hr>
 					<li><b>LONGO</b> Pierluigi, Animation Designer;</li><hr>
 					<li><b>CAMPOSEO</b> Antonio, Graphic Designer;</li><hr>
-					<li><b>DI PALMA</b> Antonio, Responsabile legale;</li>
+					<li><b>DI PALMA</b> Antonio, Responsabile Legale;</li>
 				</ul>
 
 				<h1 style="text-transform: uppercase">Perchè Your Own Fitness?</h1>
